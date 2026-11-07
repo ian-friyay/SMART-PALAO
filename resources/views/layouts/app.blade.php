@@ -29,23 +29,23 @@
 <body class="min-h-screen flex flex-col bg-[#F4F1EA] dark:bg-[#161513] text-[#3A3A3A] dark:text-[#F2EFE9] antialiased transition-colors duration-200">
 
     <!-- Unified Minimalist Navigation Bar -->
-    <header class="sticky top-0 z-50 bg-[#FAF9F6]/90 dark:bg-[#1C1B19]/90 backdrop-blur-md border-b border-[#D9CBB8] dark:border-[#3A3833] transition-colors duration-200">
+    <header class="sticky top-0 z-50 bg-[#FAF9F6]/95 dark:bg-[#1C1B19]/95 backdrop-blur-md border-b border-[#D9CBB8] dark:border-[#3A3833] transition-colors duration-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 gap-4">
+            <div class="flex items-center justify-between h-16 sm:h-20 gap-3">
                 
                 <!-- Brand: Logo & Clean Title (No extra descriptions) -->
-                <div class="flex items-center gap-6">
-                    <a href="{{ route('store') }}" class="flex items-center gap-3.5 group">
-                        <div class="relative w-11 h-11 rounded-full overflow-hidden shadow-sm ring-2 ring-[#FFC107]/60 group-hover:ring-[#FFC107] group-hover:scale-105 transition-all">
+                <div class="flex items-center gap-4 lg:gap-6 shrink-0">
+                    <a href="{{ route('store') }}" class="flex items-center gap-2.5 sm:gap-3.5 group shrink-0">
+                        <div class="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-sm ring-2 ring-[#FFC107]/60 group-hover:ring-[#FFC107] group-hover:scale-105 transition-all shrink-0">
                             <img src="{{ asset('images/smart-palao-logo.png') }}" alt="Smart Palao Logo" class="w-full h-full object-cover">
                         </div>
-                        <span class="font-black text-xl tracking-tight text-[#3A3A3A] dark:text-[#F2EFE9] select-none">
+                        <span class="font-black text-base sm:text-xl tracking-tight text-[#3A3A3A] dark:text-[#F2EFE9] select-none whitespace-nowrap">
                             SMART PALAO
                         </span>
                     </a>
 
-                    <!-- Main Navigation Links -->
-                    <nav class="hidden md:flex items-center gap-1.5 ml-2">
+                    <!-- Main Navigation Links (Desktop) -->
+                    <nav class="hidden lg:flex items-center gap-1.5 ml-2">
                         <a href="{{ route('store') }}" class="px-3.5 py-2 rounded-xl text-xs font-bold transition {{ request()->routeIs('store') ? 'bg-[#FFC107] text-[#1F1F1F] shadow-sm' : 'text-[#5A5A5A] dark:text-[#A8A49C] hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824]' }}">
                             Storefront
                         </a>
@@ -75,35 +75,35 @@
                     </nav>
                 </div>
 
-                <!-- Right Utility Bar: Branch, Dark Mode, Cart, Role Switcher, Account -->
+                <!-- Right Utility Bar -->
                 <div class="flex items-center gap-2 sm:gap-3">
                     
-                    <!-- Branch Selector Pill -->
-                    <form action="{{ route('store.setBranch') }}" method="POST" class="relative">
+                    <!-- Desktop: Branch Selector Pill -->
+                    <form action="{{ route('store.setBranch') }}" method="POST" class="relative hidden md:block">
                         @csrf
                         <div class="flex items-center rounded-xl bg-white dark:bg-[#24221F] border border-[#D9CBB8] dark:border-[#3A3833] px-2.5 py-1.5 shadow-sm text-xs font-bold">
-                            <span class="text-[#89B4C4] mr-1 hidden sm:inline">📍</span>
+                            <span class="text-[#89B4C4] mr-1">📍</span>
                             <select name="branch" onchange="this.form.submit()" class="bg-transparent font-bold text-[#3A3A3A] dark:text-[#F2EFE9] focus:outline-none cursor-pointer text-xs">
-                                <option value="Gloria" {{ session('selected_branch', 'Gloria') === 'Gloria' ? 'selected' : '' }}>Gloria</option>
-                                <option value="Boracay" {{ session('selected_branch', 'Gloria') === 'Boracay' ? 'selected' : '' }}>Boracay</option>
+                                <option value="Roxas" {{ session('selected_branch', 'Roxas') === 'Roxas' ? 'selected' : '' }}>Roxas (Main)</option>
+                                <option value="Boracay" {{ session('selected_branch', 'Roxas') === 'Boracay' ? 'selected' : '' }}>Boracay</option>
                             </select>
                         </div>
                     </form>
 
-                    <!-- Dark Mode Toggle Button -->
+                    <!-- Dark Mode Toggle Button (Always accessible) -->
                     <button 
                         id="theme-toggle-btn"
                         onclick="toggleDarkMode()" 
                         type="button" 
-                        class="p-2 rounded-xl bg-white dark:bg-[#24221F] border border-[#D9CBB8] dark:border-[#3A3833] hover:border-[#FFC107] text-[#3A3A3A] dark:text-[#FFC107] transition shadow-sm flex items-center justify-center w-9 h-9" 
+                        class="p-2 rounded-xl bg-white dark:bg-[#24221F] border border-[#D9CBB8] dark:border-[#3A3833] hover:border-[#FFC107] text-[#3A3A3A] dark:text-[#FFC107] transition shadow-sm flex items-center justify-center w-9 h-9 shrink-0" 
                         title="Toggle Light / Dark Mode"
                     >
                         <span id="theme-icon-light" class="hidden dark:inline text-base">☀️</span>
                         <span id="theme-icon-dark" class="inline dark:hidden text-base">🌙</span>
                     </button>
 
-                    <!-- Shopping Cart Button -->
-                    <a href="{{ route('store.cart') }}" class="relative p-2 rounded-xl bg-white dark:bg-[#24221F] border border-[#D9CBB8] dark:border-[#3A3833] hover:border-[#FFC107] text-[#3A3A3A] dark:text-[#F2EFE9] transition shadow-sm flex items-center justify-center w-9 h-9">
+                    <!-- Shopping Cart Button (Always accessible) -->
+                    <a href="{{ route('store.cart') }}" class="relative p-2 rounded-xl bg-white dark:bg-[#24221F] border border-[#D9CBB8] dark:border-[#3A3833] hover:border-[#FFC107] text-[#3A3A3A] dark:text-[#F2EFE9] transition shadow-sm flex items-center justify-center w-9 h-9 shrink-0">
                         <svg class="w-4 h-4 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
@@ -112,8 +112,8 @@
                         </span>
                     </a>
 
-                    <!-- Clean 1-Click Role Switcher Pill -->
-                    <div class="relative group">
+                    <!-- Desktop: Clean 1-Click Role Switcher Pill -->
+                    <div class="relative group hidden md:block">
                         <button class="flex items-center gap-1.5 py-1.5 px-2.5 rounded-xl bg-white dark:bg-[#24221F] border border-[#D9CBB8] dark:border-[#3A3833] text-xs font-bold shadow-sm hover:border-[#FFC107] transition">
                             <span class="w-2 h-2 rounded-full {{ auth()->check() && auth()->user()->isOwner() ? 'bg-[#FFC107]' : 'bg-[#89B4C4]' }}"></span>
                             <span class="text-[11px] uppercase tracking-wide text-[#3A3A3A] dark:text-[#F2EFE9]">
@@ -137,39 +137,184 @@
                         </div>
                     </div>
 
-                    <!-- User Account / Logout Menu -->
+                    <!-- Desktop: User Account / Logout Menu -->
+                    <div class="hidden md:block">
+                        @auth
+                            <div class="relative group">
+                                <button class="flex items-center gap-2 p-1 rounded-xl hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824] transition">
+                                    <div class="w-8 h-8 rounded-full {{ auth()->user()->isOwner() ? 'bg-[#FFC107] text-[#1F1F1F]' : 'bg-[#89B4C4] text-white' }} flex items-center justify-center font-black text-xs shadow-sm">
+                                        {{ substr(auth()->user()->name, 0, 1) }}
+                                    </div>
+                                </button>
+                                <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-[#24221F] rounded-2xl shadow-xl border border-[#D9CBB8] dark:border-[#3A3833] py-2 hidden group-hover:block transition-all z-50">
+                                    <div class="px-4 py-2 border-b border-[#D9CBB8]/50 dark:border-[#3A3833]">
+                                        <p class="text-[11px] font-extrabold text-[#3A3A3A] dark:text-[#F2EFE9] truncate">{{ auth()->user()->name }}</p>
+                                        <p class="text-[10px] text-gray-400 truncate">{{ auth()->user()->email }}</p>
+                                    </div>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="w-full text-left px-4 py-2 text-xs font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 transition">
+                                            Log Out
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        @else
+                            <div class="flex items-center gap-1.5">
+                                <a href="{{ route('login') }}" class="px-3 py-1.5 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#24221F] text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#FAF8F5] dark:hover:bg-[#2D2B27] transition shadow-sm">
+                                    Log In
+                                </a>
+                                <a href="{{ route('register') }}" class="px-3 py-1.5 rounded-xl bg-[#FFC107] text-xs font-bold text-[#1F1F1F] hover:bg-[#E5AC00] transition shadow-sm">
+                                    Register
+                                </a>
+                            </div>
+                        @endauth
+                    </div>
+
+                    <!-- Mobile & Tablet Hamburger Button -->
+                    <button 
+                        id="mobile-drawer-btn" 
+                        onclick="toggleMobileDrawer()" 
+                        type="button" 
+                        aria-label="Toggle Navigation Menu" 
+                        class="flex lg:hidden p-2 rounded-xl bg-white dark:bg-[#24221F] border border-[#D9CBB8] dark:border-[#3A3833] hover:border-[#FFC107] text-[#3A3A3A] dark:text-[#F2EFE9] transition shadow-sm w-9 h-9 items-center justify-center shrink-0"
+                    >
+                        <svg id="hamburger-bars-icon" class="w-5 h-5 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="hamburger-close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile & Tablet Slide-Down Drawer Sheet -->
+        <div id="mobile-drawer" class="hidden lg:hidden border-t border-[#D9CBB8] dark:border-[#3A3833] bg-[#FAF9F6]/98 dark:bg-[#1C1B19]/98 backdrop-blur-xl shadow-2xl transition-all">
+            <div class="px-4 py-5 space-y-4 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
+                
+                <!-- 1. Fulfillment Branch Selector -->
+                <div class="p-3.5 rounded-2xl bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#7A7A7A] dark:text-[#8E8B83] block mb-2">
+                        📍 Fulfillment Branch Location
+                    </span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <form action="{{ route('store.setBranch') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="branch" value="Roxas">
+                            <button type="submit" class="w-full py-2.5 px-3 rounded-xl text-xs font-bold text-center border transition flex items-center justify-center gap-1.5 {{ session('selected_branch', 'Roxas') === 'Roxas' ? 'bg-[#FFF8E1] dark:bg-[#2A261A] text-[#1F1F1F] dark:text-[#FFC107] border-[#FFC107] ring-1 ring-[#FFC107]' : 'bg-[#FAF8F5] dark:bg-[#1A1917] text-[#5A5A5A] dark:text-[#A8A49C] border-[#D9CBB8] dark:border-[#3A3833]' }}">
+                                <span class="w-2 h-2 rounded-full {{ session('selected_branch', 'Roxas') === 'Roxas' ? 'bg-[#FFC107]' : 'bg-transparent' }}"></span>
+                                <span>🌾 Roxas (Main)</span>
+                            </button>
+                        </form>
+                        <form action="{{ route('store.setBranch') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="branch" value="Boracay">
+                            <button type="submit" class="w-full py-2.5 px-3 rounded-xl text-xs font-bold text-center border transition flex items-center justify-center gap-1.5 {{ session('selected_branch', 'Roxas') === 'Boracay' ? 'bg-[#EBF3F6] dark:bg-[#1B2529] text-[#1F1F1F] dark:text-[#89B4C4] border-[#89B4C4] ring-1 ring-[#89B4C4]' : 'bg-[#FAF8F5] dark:bg-[#1A1917] text-[#5A5A5A] dark:text-[#A8A49C] border-[#D9CBB8] dark:border-[#3A3833]' }}">
+                                <span class="w-2 h-2 rounded-full {{ session('selected_branch', 'Roxas') === 'Boracay' ? 'bg-[#89B4C4]' : 'bg-transparent' }}"></span>
+                                <span>🏖️ Boracay</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 2. Role Switcher -->
+                <div class="p-3.5 rounded-2xl bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#7A7A7A] dark:text-[#8E8B83]">
+                            👑 Quick Role Switch
+                        </span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full {{ auth()->check() && auth()->user()->isOwner() ? 'bg-[#FFC107]/20 text-[#B38600] dark:text-[#FFC107]' : 'bg-[#89B4C4]/20 text-[#3D6677] dark:text-[#89B4C4]' }}">
+                            Current: {{ auth()->check() ? ucfirst(auth()->user()->role) : 'Guest' }}
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <a href="{{ route('auth.quickLogin', 'owner') }}" class="py-2.5 px-3 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-1.5 border transition {{ auth()->check() && auth()->user()->isOwner() ? 'bg-[#FFF8E1] dark:bg-[#2A261A] text-[#1F1F1F] dark:text-[#FFC107] border-[#FFC107] ring-1 ring-[#FFC107]' : 'bg-[#FAF8F5] dark:bg-[#1A1917] text-[#5A5A5A] dark:text-[#A8A49C] border-[#D9CBB8] dark:border-[#3A3833]' }}">
+                            <span>👑 Owner (Admin)</span>
+                        </a>
+                        <a href="{{ route('auth.quickLogin', 'buyer') }}" class="py-2.5 px-3 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-1.5 border transition {{ auth()->check() && !auth()->user()->isOwner() ? 'bg-[#EBF3F6] dark:bg-[#1B2529] text-[#1F1F1F] dark:text-[#89B4C4] border-[#89B4C4] ring-1 ring-[#89B4C4]' : 'bg-[#FAF8F5] dark:bg-[#1A1917] text-[#5A5A5A] dark:text-[#A8A49C] border-[#D9CBB8] dark:border-[#3A3833]' }}">
+                            <span>🛒 Buyer (Store)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Navigation Links List -->
+                <div class="space-y-1">
+                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#7A7A7A] dark:text-[#8E8B83] block px-2 mb-1">
+                        Site Menu
+                    </span>
+                    <a href="{{ route('store') }}" class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold transition {{ request()->routeIs('store') ? 'bg-[#FFC107] text-[#1F1F1F] shadow-sm' : 'text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824]' }}">
+                        <span class="text-base">🏪</span>
+                        <span>Storefront Catalog</span>
+                    </a>
+                    <a href="{{ route('store.about') }}" class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold transition {{ request()->routeIs('store.about') ? 'bg-[#FFC107] text-[#1F1F1F] shadow-sm' : 'text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824]' }}">
+                        <span class="text-base">🌾</span>
+                        <span>About Farm & IoT Heritage</span>
+                    </a>
+
                     @auth
-                        <div class="relative group">
-                            <button class="flex items-center gap-2 p-1 rounded-xl hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824] transition">
-                                <div class="w-8 h-8 rounded-full {{ auth()->user()->isOwner() ? 'bg-[#FFC107] text-[#1F1F1F]' : 'bg-[#89B4C4] text-white' }} flex items-center justify-center font-black text-xs shadow-sm">
+                        @if(auth()->user()->isOwner())
+                            <div class="pt-3 pb-1 px-2 text-[10px] font-extrabold uppercase tracking-wider text-[#FFC107]">
+                                Owner Controls & Telematics
+                            </div>
+                            <a href="{{ route('admin.dashboard') }}" class="flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-bold transition {{ request()->routeIs('admin.dashboard') ? 'bg-[#FFC107] text-[#1F1F1F] shadow-sm' : 'text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824]' }}">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-base">📡</span>
+                                    <span>IoT Incubation Dashboard</span>
+                                </div>
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            </a>
+                            <a href="{{ route('admin.inventory') }}" class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold transition {{ request()->routeIs('admin.inventory') ? 'bg-[#FFC107] text-[#1F1F1F] shadow-sm' : 'text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824]' }}">
+                                <span class="text-base">📦</span>
+                                <span>Multi-Branch Inventory</span>
+                            </a>
+                            <a href="{{ route('admin.orders') }}" class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold transition {{ request()->routeIs('admin.orders') ? 'bg-[#FFC107] text-[#1F1F1F] shadow-sm' : 'text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824]' }}">
+                                <span class="text-base">📋</span>
+                                <span>Order Fulfillment Kanban</span>
+                            </a>
+                        @else
+                            <a href="{{ route('store.orders') }}" class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-xs font-bold transition {{ request()->routeIs('store.orders') ? 'bg-[#FFC107] text-[#1F1F1F] shadow-sm' : 'text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2A2824]' }}">
+                                <span class="text-base">🛍️</span>
+                                <span>My Order History</span>
+                            </a>
+                        @endif
+                    @endauth
+                </div>
+
+                <!-- 4. User Session & Authentication -->
+                <div class="pt-3 border-t border-[#D9CBB8]/50 dark:border-[#3A3833]">
+                    @auth
+                        <div class="p-3.5 rounded-2xl bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full {{ auth()->user()->isOwner() ? 'bg-[#FFC107] text-[#1F1F1F]' : 'bg-[#89B4C4] text-white' }} flex items-center justify-center font-black text-xs shadow-sm shrink-0">
                                     {{ substr(auth()->user()->name, 0, 1) }}
                                 </div>
-                            </button>
-                            <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-[#24221F] rounded-2xl shadow-xl border border-[#D9CBB8] dark:border-[#3A3833] py-2 hidden group-hover:block transition-all z-50">
-                                <div class="px-4 py-2 border-b border-[#D9CBB8]/50 dark:border-[#3A3833]">
-                                    <p class="text-[11px] font-extrabold text-[#3A3A3A] dark:text-[#F2EFE9] truncate">{{ auth()->user()->name }}</p>
+                                <div class="truncate max-w-[150px]">
+                                    <p class="text-xs font-black text-[#3A3A3A] dark:text-[#F2EFE9] truncate">{{ auth()->user()->name }}</p>
                                     <p class="text-[10px] text-gray-400 truncate">{{ auth()->user()->email }}</p>
                                 </div>
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="w-full text-left px-4 py-2 text-xs font-bold text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 transition">
-                                        Log Out
-                                    </button>
-                                </form>
                             </div>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="px-3 py-1.5 rounded-xl text-xs font-bold text-red-600 bg-red-50 dark:bg-red-950/40 hover:bg-red-100 transition">
+                                    Log Out
+                                </button>
+                            </form>
                         </div>
                     @else
-                        <div class="flex items-center gap-1.5">
-                            <a href="{{ route('login') }}" class="px-3 py-1.5 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#24221F] text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#FAF8F5] dark:hover:bg-[#2D2B27] transition shadow-sm">
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="{{ route('login') }}" class="py-2.5 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#24221F] text-xs font-bold text-center text-[#3A3A3A] dark:text-[#F2EFE9] shadow-sm">
                                 Log In
                             </a>
-                            <a href="{{ route('register') }}" class="px-3 py-1.5 rounded-xl bg-[#FFC107] text-xs font-bold text-[#1F1F1F] hover:bg-[#E5AC00] transition shadow-sm">
+                            <a href="{{ route('register') }}" class="py-2.5 rounded-xl bg-[#FFC107] text-xs font-bold text-center text-[#1F1F1F] shadow-sm">
                                 Register
                             </a>
                         </div>
                     @endauth
-
                 </div>
+
             </div>
         </div>
     </header>
@@ -213,7 +358,7 @@
                         <span class="font-black text-lg text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight">SMART PALAO</span>
                     </div>
                     <p class="text-xs text-[#7A7A7A] dark:text-[#8E8B83] leading-relaxed">
-                        Next-generation duck egg incubation powered by AMG8833 64-point thermal profiling and SHT31 microclimate telematics. Serving Gloria, Oriental Mindoro and Boracay Island.
+                        Next-generation duck egg incubation powered by real-time camera telemetry and SHT31 microclimate telematics. Serving Roxas, Oriental Mindoro and Boracay Island.
                     </p>
                 </div>
 
@@ -224,15 +369,15 @@
                         <li class="flex items-start gap-2">
                             <span class="text-[#FFC107] font-bold">📍</span>
                             <div>
-                                <span class="font-bold text-[#3A3A3A] dark:text-[#F2EFE9]">Gloria Hatchery (Main)</span>
-                                <p class="text-[#7A7A7A] dark:text-[#8E8B83]">Palao Farmstead, Gloria, Oriental Mindoro</p>
+                                <span class="font-bold text-[#3A3A3A] dark:text-[#F2EFE9]">Roxas Hatchery (Main Farm)</span>
+                                <p class="text-[#7A7A7A] dark:text-[#8E8B83]">Palao Farmstead, Roxas, Oriental Mindoro</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-[#89B4C4] font-bold">📍</span>
                             <div>
                                 <span class="font-bold text-[#3A3A3A] dark:text-[#F2EFE9]">Boracay Island Depot</span>
-                                <p class="text-[#7A7A7A] dark:text-[#8E8B83]">Station 2, Malay, Aklan</p>
+                                <p class="text-[#7A7A7A] dark:text-[#8E8B83]">Station 2, Malay, Aklan (Order Fulfillment Only)</p>
                             </div>
                         </li>
                     </ul>
@@ -242,8 +387,8 @@
                 <div>
                     <h4 class="text-xs font-bold uppercase tracking-wider text-[#3A3A3A] dark:text-[#F2EFE9] mb-3">IoT Telematics Stack</h4>
                     <ul class="space-y-1.5 text-xs text-[#666666] dark:text-[#8E8B83]">
-                        <li><span class="font-semibold text-[#3A3A3A] dark:text-[#F2EFE9]">• Sensors:</span> AMG8833 8x8 IR + SHT31</li>
-                        <li><span class="font-semibold text-[#3A3A3A] dark:text-[#F2EFE9]">• Board:</span> ESP32 WiFi Microcontroller</li>
+                        <li><span class="font-semibold text-[#3A3A3A] dark:text-[#F2EFE9]">• Visual Stream:</span> ESP32-CAM Live Incubator Feed</li>
+                        <li><span class="font-semibold text-[#3A3A3A] dark:text-[#F2EFE9]">• Environment:</span> Sensirion SHT31 Temp & Humidity</li>
                         <li><span class="font-semibold text-[#3A3A3A] dark:text-[#F2EFE9]">• Endpoint:</span> POST /api/telemetry/push</li>
                     </ul>
                 </div>
@@ -276,7 +421,7 @@
         </div>
     </footer>
 
-    <!-- Dark Mode Toggle Script -->
+    <!-- Navigation & Theme Scripts -->
     <script>
         function toggleDarkMode() {
             const html = document.documentElement;
@@ -288,6 +433,36 @@
                 localStorage.setItem('smart_palao_theme', 'dark');
             }
         }
+
+        function toggleMobileDrawer() {
+            const drawer = document.getElementById('mobile-drawer');
+            const barsIcon = document.getElementById('hamburger-bars-icon');
+            const closeIcon = document.getElementById('hamburger-close-icon');
+            if (!drawer) return;
+
+            const isHidden = drawer.classList.contains('hidden');
+            if (isHidden) {
+                drawer.classList.remove('hidden');
+                barsIcon?.classList.add('hidden');
+                closeIcon?.classList.remove('hidden');
+            } else {
+                drawer.classList.add('hidden');
+                barsIcon?.classList.remove('hidden');
+                closeIcon?.classList.add('hidden');
+            }
+        }
+
+        // Close mobile drawer on desktop resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                const drawer = document.getElementById('mobile-drawer');
+                if (drawer && !drawer.classList.contains('hidden')) {
+                    drawer.classList.add('hidden');
+                    document.getElementById('hamburger-bars-icon')?.classList.remove('hidden');
+                    document.getElementById('hamburger-close-icon')?.classList.add('hidden');
+                }
+            }
+        });
     </script>
 
     @stack('scripts')

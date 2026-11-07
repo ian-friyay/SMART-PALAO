@@ -177,6 +177,18 @@ body {
     user-select: none;
 }
 
+@media (max-width: 640px) {
+    .heatmap-grid {
+        gap: 2px;
+        padding: 4px;
+        border-radius: 0.5rem;
+    }
+    .heatmap-cell {
+        font-size: 0.56rem;
+        border-radius: 2px;
+    }
+}
+
 .heatmap-cell:hover {
     transform: scale(1.15);
     z-index: 10;

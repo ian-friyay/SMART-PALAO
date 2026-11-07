@@ -16,7 +16,7 @@ class ExampleTest extends TestCase
     public function test_the_application_returns_a_successful_response(): void
     {
         Product::create([
-            'branch_location' => 'Gloria',
+            'branch_location' => 'Roxas',
             'size' => 'Large',
             'price' => 180.00,
             'stock' => 50,

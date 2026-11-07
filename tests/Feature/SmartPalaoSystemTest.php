@@ -39,12 +39,12 @@ class SmartPalaoSystemTest extends TestCase
             'password' => Hash::make('password123'),
             'role' => 'buyer',
             'phone' => '+63 928 555 7788',
-            'address' => 'Barangay Maligaya, Gloria, Oriental Mindoro',
+            'address' => 'Barangay Paclasan, Roxas, Oriental Mindoro',
         ]);
 
         $this->chamber = Chamber::create([
-            'name' => 'Incubator Alpha (Gloria Main)',
-            'location' => 'Gloria (Main Farm)',
+            'name' => 'Incubator Alpha (Roxas Main)',
+            'location' => 'Roxas (Main Farm)',
             'setpoint' => 37.50,
             'critical_temp' => 38.50,
             'mode' => 'AUTO',
@@ -57,7 +57,7 @@ class SmartPalaoSystemTest extends TestCase
         ]);
 
         $this->productLarge = Product::create([
-            'branch_location' => 'Gloria',
+            'branch_location' => 'Roxas',
             'size' => 'Large',
             'price' => 180.00,
             'stock' => 50,
@@ -66,7 +66,7 @@ class SmartPalaoSystemTest extends TestCase
         ]);
 
         Product::create([
-            'branch_location' => 'Gloria',
+            'branch_location' => 'Roxas',
             'size' => 'Medium',
             'price' => 150.00,
             'stock' => 60,
@@ -75,7 +75,7 @@ class SmartPalaoSystemTest extends TestCase
         ]);
 
         Product::create([
-            'branch_location' => 'Gloria',
+            'branch_location' => 'Roxas',
             'size' => 'Small',
             'price' => 120.00,
             'stock' => 40,
@@ -105,7 +105,7 @@ class SmartPalaoSystemTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Technical Incubation Dashboard');
-        $response->assertSee('AMG8833 Thermal Heatmap');
+        $response->assertSee('ESP32-CAM');
     }
 
     /**
@@ -188,11 +188,11 @@ class SmartPalaoSystemTest extends TestCase
         $initialStock = $this->productLarge->stock;
 
         $payload = [
-            'branch_location' => 'Gloria',
+            'branch_location' => 'Roxas',
             'customer_name' => 'Maria Santos',
             'customer_email' => 'buyer@gmail.com',
             'customer_phone' => '+63 928 555 7788',
-            'delivery_address' => 'Barangay Maligaya, Gloria, Oriental Mindoro',
+            'delivery_address' => 'Barangay Paclasan, Roxas, Oriental Mindoro',
             'payment_method' => 'Cash on Delivery',
             'notes' => 'Handle with care',
             'items' => [
@@ -213,7 +213,7 @@ class SmartPalaoSystemTest extends TestCase
 
         $this->assertDatabaseHas('orders', [
             'customer_email' => 'buyer@gmail.com',
-            'branch_location' => 'Gloria',
+            'branch_location' => 'Roxas',
             'status' => 'Pending',
         ]);
     }
@@ -224,13 +224,13 @@ class SmartPalaoSystemTest extends TestCase
     public function test_owner_can_advance_kanban_order_status(): void
     {
         $order = Order::create([
-            'order_number' => 'SP-GLO-TEST-001',
+            'order_number' => 'SP-ROX-TEST-001',
             'user_id' => $this->buyer->id,
-            'branch_location' => 'Gloria',
+            'branch_location' => 'Roxas',
             'customer_name' => 'Maria Santos',
             'customer_email' => 'buyer@gmail.com',
             'customer_phone' => '+63 928 555 7788',
-            'delivery_address' => 'Gloria, Oriental Mindoro',
+            'delivery_address' => 'Roxas, Oriental Mindoro',
             'payment_method' => 'Cash on Delivery',
             'status' => 'Pending',
             'total_amount' => 360.00,
@@ -256,10 +256,10 @@ class SmartPalaoSystemTest extends TestCase
         $payload = [
             'chamber_id' => $this->chamber->id,
             'batch_id' => 'BATCH-2026-D01',
-            'grid_position' => 'Row 4, Col 5',
+            'grid_position' => 'Day 14 Mid-Term Candling',
             'result' => 'viable',
             'candling_day' => 14,
-            'notes' => 'Clear embryo motion detected.',
+            'notes' => 'Clear embryo motion detected under camera stream.',
         ];
 
         $response = $this->actingAs($this->owner)->postJson('/api/vitality/logs', $payload);
@@ -268,7 +268,7 @@ class SmartPalaoSystemTest extends TestCase
         $response->assertJson(['success' => true]);
 
         $this->assertDatabaseHas('vitality_logs', [
-            'grid_position' => 'Row 4, Col 5',
+            'grid_position' => 'Day 14 Mid-Term Candling',
             'result' => 'viable',
         ]);
     }

@@ -5,7 +5,7 @@
             <span class="font-mono font-black text-xs text-[#3A3A3A] dark:text-[#F2EFE9] block">{{ $order->order_number }}</span>
             <span class="text-[10px] text-gray-400 dark:text-gray-500">{{ $order->created_at->diffForHumans() }}</span>
         </div>
-        <span class="px-2 py-0.5 rounded text-[10px] font-black uppercase {{ $order->branch_location === 'Gloria' ? 'bg-[#FFF8E1] dark:bg-[#2A261A] text-[#7A5A00] dark:text-[#FFC107] border border-[#FFC107]/40' : 'bg-[#EBF3F6] dark:bg-[#1B2529] text-[#2C5263] dark:text-[#89B4C4] border border-[#89B4C4]/40' }}">
+        <span class="px-2 py-0.5 rounded text-[10px] font-black uppercase {{ $order->branch_location === 'Roxas' ? 'bg-[#FFF8E1] dark:bg-[#2A261A] text-[#7A5A00] dark:text-[#FFC107] border border-[#FFC107]/40' : 'bg-[#EBF3F6] dark:bg-[#1B2529] text-[#2C5263] dark:text-[#89B4C4] border border-[#89B4C4]/40' }}">
             📍 {{ $order->branch_location }}
         </span>
     </div>

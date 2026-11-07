@@ -6,15 +6,15 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8" id="incubation-dashboard">
 
     <!-- Top Header & Status Bar -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-[#22201D] p-6 rounded-3xl border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm transition-colors duration-200">
-        <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-[#FFF8E1] dark:bg-[#2A261A] flex items-center justify-center p-1 border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-[#22201D] p-4 sm:p-6 rounded-3xl border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm transition-colors duration-200">
+        <div class="flex items-center gap-3.5 sm:gap-4">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#FFF8E1] dark:bg-[#2A261A] flex items-center justify-center p-1 border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm shrink-0">
                 <img src="{{ asset('images/smart-palao-logo.png') }}" alt="Smart Palao Logo" class="w-full h-full object-contain rounded-xl">
             </div>
             <div>
                 <div class="flex items-center gap-2">
-                    <h1 class="text-2xl font-black text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight">Technical Incubation Dashboard</h1>
-                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase bg-[#FFC107] text-[#1F1F1F]">
+                    <h1 class="text-xl sm:text-2xl font-black text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight">Technical Incubation Dashboard</h1>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase bg-[#FFC107] text-[#1F1F1F] shrink-0">
                         Owner Level
                     </span>
                 </div>
@@ -25,27 +25,27 @@
         </div>
 
         <!-- Telemetry Simulator & Live Actions -->
-        <div class="flex flex-wrap items-center gap-2">
+        <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 w-full md:w-auto">
             <!-- Audio Alert Toggle -->
-            <button id="toggle-audio-btn" onclick="toggleAudioAlert()" class="px-3 py-2 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] bg-[#F4F1EA] dark:bg-[#1A1917] hover:bg-[#FAF8F5] dark:hover:bg-[#262420] transition flex items-center gap-1.5 shadow-sm" title="Toggle audible alarm for thermal runaway">
+            <button id="toggle-audio-btn" onclick="toggleAudioAlert()" class="px-2.5 sm:px-3 py-2 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] bg-[#F4F1EA] dark:bg-[#1A1917] hover:bg-[#FAF8F5] dark:hover:bg-[#262420] transition flex items-center justify-center gap-1.5 shadow-sm" title="Toggle audible alarm for thermal runaway">
                 <span id="audio-icon">🔔</span>
-                <span id="audio-label">Sound Alarm: ON</span>
+                <span id="audio-label" class="truncate">Alarm: ON</span>
             </button>
 
             <!-- Live Polling Toggle -->
-            <button id="toggle-stream-btn" onclick="toggleStream()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#89B4C4] text-white hover:bg-[#6496A9] transition flex items-center gap-1.5 shadow-sm">
+            <button id="toggle-stream-btn" onclick="toggleStream()" class="px-2.5 sm:px-3.5 py-2 rounded-xl text-xs font-bold bg-[#89B4C4] text-white hover:bg-[#6496A9] transition flex items-center justify-center gap-1.5 shadow-sm">
                 <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-                <span id="stream-btn-label">Stream: Active (2.5s)</span>
+                <span id="stream-btn-label" class="truncate">Stream: Active</span>
             </button>
 
             <!-- Inject Normal ESP32 Packet -->
-            <button onclick="triggerSimulation(false)" class="px-3 py-2 rounded-xl text-xs font-bold bg-[#FAF8F5] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833] text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2D2B27] transition flex items-center gap-1">
-                <span>🔄 Simulate Packet</span>
+            <button onclick="triggerSimulation(false)" class="px-2.5 sm:px-3 py-2 rounded-xl text-xs font-bold bg-[#FAF8F5] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833] text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2D2B27] transition flex items-center justify-center gap-1">
+                <span>🔄 Packet</span>
             </button>
 
             <!-- Inject Thermal Runaway Spike -->
-            <button onclick="triggerSimulation(true)" class="px-3 py-2 rounded-xl text-xs font-bold bg-[#E63946] text-white hover:bg-red-700 transition flex items-center gap-1 shadow-sm" title="Force AMG8833 temperatures above critical threshold to test thermal runaway alerts">
-                <span>🔥 Inject Thermal Spike</span>
+            <button onclick="triggerSimulation(true)" class="px-2.5 sm:px-3 py-2 rounded-xl text-xs font-bold bg-[#E63946] text-white hover:bg-red-700 transition flex items-center justify-center gap-1 shadow-sm" title="Simulate chamber thermal spike above critical ceiling to test safety interlocks">
+                <span>🔥 Spike</span>
             </button>
         </div>
     </div>
@@ -82,7 +82,7 @@
     </div>
 
     <!-- Ambient Metrics Row (Sensirion SHT31) -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <!-- Ambient Chamber Temperature -->
         <div class="egg-card p-5 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl">
             <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#7A7A7A] dark:text-[#8E8B83] mb-2">
@@ -184,73 +184,153 @@
         </div>
     </div>
 
-    <!-- Main Grid: Thermal Heatmap (AMG8833) & Control Panel -->
+    <!-- Main Grid: Live ESP32-CAM Optical Camera Monitor & Control Panel -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-        <!-- Left Column: Real-Time 8x8 Thermal Heatmap (7 cols) -->
+        <!-- Left Column: ESP32-CAM Live Incubator Optical Monitor (7 cols) -->
         <div class="lg:col-span-7 space-y-4">
-            <div class="egg-card p-6 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl shadow-sm">
+            <div class="egg-card p-4 sm:p-6 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl shadow-sm">
+                <!-- Camera Header & Controls -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#D9CBB8]/40 dark:border-[#3A3833]">
                     <div>
                         <div class="flex items-center gap-2">
-                            <h2 class="text-lg font-black text-[#3A3A3A] dark:text-[#F2EFE9]">AMG8833 Thermal Heatmap</h2>
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-[#89B4C4]/20 text-[#3D6677] dark:text-[#89B4C4]">
-                                8x8 Grid (64 Sensels)
+                            <h2 class="text-base sm:text-lg font-black text-[#3A3A3A] dark:text-[#F2EFE9] flex items-center gap-2">
+                                <span>📹</span>
+                                <span>ESP32-CAM Live Incubator Camera</span>
+                            </h2>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>1080p Stream</span>
                             </span>
                         </div>
-                        <p class="text-xs text-[#7A7A7A] dark:text-[#8E8B83] mt-0.5">Real-time egg surface infrared distribution across tray matrix</p>
+                        <p class="text-xs text-[#7A7A7A] dark:text-[#8E8B83] mt-0.5">Real-time optical feed of incubator chamber & egg clutch (Roxas Main Hatchery)</p>
                     </div>
 
-                    <!-- Heatmap Legend -->
-                    <div class="flex items-center gap-1.5 text-[11px] font-semibold text-[#5A5A5A] dark:text-[#A8A49C]">
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-[#89B4C4]"></span> Cool (&lt;36.8°)</span>
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-[#D9CBB8]"></span> Eq (37.2°)</span>
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-[#FFC107]"></span> Opt (37.5°)</span>
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-[#E63946]"></span> Crit (&ge;38.5°)</span>
+                    <!-- Lighting & Camera Actions -->
+                    <div class="flex items-center gap-1.5 sm:gap-2">
+                        <div class="inline-flex rounded-xl p-1 bg-[#F4F1EA] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833]">
+                            <button type="button" id="btn-mode-standard" onclick="setLightingMode('standard')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-white dark:bg-[#2D2B27] text-[#3A3A3A] dark:text-[#F2EFE9] shadow-sm transition flex items-center gap-1">
+                                <span>💡</span>
+                                <span>Daylight LED</span>
+                            </button>
+                            <button type="button" id="btn-mode-candling" onclick="setLightingMode('candling')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] hover:text-[#3A3A3A] dark:hover:text-[#F2EFE9] transition flex items-center gap-1">
+                                <span>🕯️</span>
+                                <span>Candling Glow</span>
+                            </button>
+                        </div>
+                        <button type="button" onclick="cycleZoom()" id="btn-zoom" class="px-2.5 py-1.5 rounded-xl bg-[#FAF8F5] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833] text-[11px] font-mono font-bold text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#EBE5D8] dark:hover:bg-[#2D2B27] transition" title="Digital Zoom">
+                            1.0x
+                        </button>
+                        <button type="button" onclick="takeCameraSnapshot()" class="p-2 rounded-xl bg-[#FAF8F5] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833] text-xs font-bold hover:bg-[#EBE5D8] dark:hover:bg-[#2D2B27] transition" title="Capture Snapshot Frame">
+                            📸
+                        </button>
                     </div>
                 </div>
 
-                <!-- 8x8 Heatmap Container -->
-                <div class="mt-6 flex flex-col items-center">
-                    <div class="relative w-full max-w-lg aspect-square">
-                        <div id="thermal-grid-container" class="heatmap-grid w-full h-full shadow-inner">
-                            <!-- 64 Cells dynamically rendered by JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Cell Inspection Popover / Display -->
-                    <div id="cell-inspector" class="w-full max-w-lg mt-4 p-3.5 rounded-2xl bg-[#FAF9F6] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833] flex items-center justify-between text-xs">
-                        <div class="flex items-center gap-3">
-                            <span class="w-4 h-4 rounded bg-[#FFC107] border border-[#D9CBB8] dark:border-[#3A3833] inline-block" id="inspector-color"></span>
-                            <div>
-                                <span class="font-bold text-[#3A3A3A] dark:text-[#F2EFE9]" id="inspector-coord">Hover on any cell to inspect</span>
-                                <span class="text-[#7A7A7A] dark:text-[#8E8B83] block text-[11px]" id="inspector-desc">Surface temperature variation indicator</span>
+                <!-- Camera Viewport (Realistic Incubator Video Monitor) -->
+                <div class="mt-4 sm:mt-6 flex flex-col items-center">
+                    <div class="relative w-full rounded-2xl overflow-hidden border-2 border-[#3A3A3A] dark:border-[#4A4843] shadow-lg bg-[#141312]">
+                        <!-- Top Camera Overlay HUD -->
+                        <div class="absolute top-0 inset-x-0 z-20 px-3 py-2 bg-gradient-to-b from-black/85 via-black/40 to-transparent flex items-center justify-between text-[11px] font-mono text-white/90 pointer-events-none">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                                <span class="font-bold tracking-wider text-red-400">REC</span>
+                                <span class="text-white/60">•</span>
+                                <span class="font-bold">ESP32-CAM-ROXAS-01</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-[10px] text-white/70">
+                                <span class="hidden sm:inline">1920x1080 @ 30 FPS</span>
+                                <span>RTSP/MJPEG</span>
+                                <span id="camera-hud-clock" class="text-amber-400 font-bold">10:00:00</span>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <span class="text-lg font-black font-mono text-[#3A3A3A] dark:text-[#F2EFE9]" id="inspector-temp">--.-°C</span>
-                            <span class="block text-[10px] font-bold uppercase text-[#89B4C4]" id="inspector-status">Idle</span>
+
+                        <!-- Chamber Viewport Container -->
+                        <div id="camera-viewport-bg" class="relative w-full min-h-[300px] sm:min-h-[360px] flex items-center justify-center p-6 transition-all duration-500 bg-gradient-to-b from-[#252320] via-[#1B1917] to-[#11100F] overflow-hidden">
+                            <!-- Zoomable Video Canvas Layer -->
+                            <div id="camera-zoom-layer" class="relative w-full max-w-lg transition-transform duration-300">
+                                <!-- Incubator Chamber Turning Rollers Bed -->
+                                <div class="relative w-full rounded-2xl p-6 border border-white/10 shadow-2xl bg-black/40 backdrop-blur-xs">
+                                    <!-- Metallic Roller Rods -->
+                                    <div class="absolute inset-x-4 inset-y-6 flex flex-col justify-between pointer-events-none opacity-30">
+                                        <div class="h-1.5 bg-gradient-to-r from-gray-500 via-gray-300 to-gray-600 rounded-full shadow"></div>
+                                        <div class="h-1.5 bg-gradient-to-r from-gray-500 via-gray-300 to-gray-600 rounded-full shadow"></div>
+                                        <div class="h-1.5 bg-gradient-to-r from-gray-500 via-gray-300 to-gray-600 rounded-full shadow"></div>
+                                        <div class="h-1.5 bg-gradient-to-r from-gray-500 via-gray-300 to-gray-600 rounded-full shadow"></div>
+                                        <div class="h-1.5 bg-gradient-to-r from-gray-500 via-gray-300 to-gray-600 rounded-full shadow"></div>
+                                    </div>
+
+                                    <!-- Natural Clutch of Duck Eggs in Incubator -->
+                                    <div id="egg-clutch-display" class="relative z-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 py-3">
+                                        <!-- Realistic eggs populated dynamically by JS matching current lighting mode -->
+                                    </div>
+
+                                    <!-- Subtle Optics Crosshair Overlay -->
+                                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+                                        <div class="w-8 h-8 border border-white/50 rounded-full"></div>
+                                        <div class="absolute w-12 h-px bg-white/40"></div>
+                                        <div class="absolute h-12 w-px bg-white/40"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Camera Status Bar HUD -->
+                        <div class="px-3 py-2 bg-black/85 border-t border-white/10 flex flex-wrap items-center justify-between text-[10px] sm:text-[11px] font-mono text-white/75">
+                            <div class="flex items-center gap-2">
+                                <span id="hud-lighting-label" class="text-amber-400 font-bold">● DAYLIGHT INSPECTION LED (5500K)</span>
+                                <span>•</span>
+                                <span>ROLLER TILT: +45°</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-white/60">
+                                <span>SHT31: <strong class="text-emerald-400 font-mono">{{ number_format($latestReading->ambient_temp ?? 37.5, 2) }}°C</strong> • <strong class="text-cyan-400 font-mono">{{ number_format($latestReading->humidity ?? 65.0, 1) }}% RH</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chamber Batch & Inspection Summary Card -->
+                    <div class="w-full mt-3 sm:mt-4 p-4 rounded-2xl bg-[#FAF9F6] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-sm text-[#3A3A3A] dark:text-[#F2EFE9]">{{ $chamber->batch_name ?? 'BATCH-2026-D01' }}</span>
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
+                                    {{ $viabilityRate }}% Viable Batch
+                                </span>
+                            </div>
+                            <p class="text-[11px] text-[#7A7A7A] dark:text-[#8E8B83]">
+                                Phase: <strong class="text-[#3A3A3A] dark:text-[#F2EFE9]">{{ $chamber->batch_day <= 25 ? 'Setter Phase' : 'Hatcher Phase' }}</strong> • 
+                                Duck Breed: <strong class="text-[#3A3A3A] dark:text-[#F2EFE9]">{{ $chamber->duck_breed ?? 'Pateros Mallard' }}</strong> • 
+                                Capacity: <strong class="text-[#3A3A3A] dark:text-[#F2EFE9]">{{ $chamber->egg_count ?? 120 }} Eggs</strong>
+                            </p>
+                        </div>
+
+                        <!-- Candling Log Trigger Action -->
+                        <div class="flex items-center gap-2 shrink-0">
+                            <button type="button" onclick="openVitalityModal()" class="egg-btn-primary px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                                <span>🔬</span>
+                                <span>Record Candling Assessment</span>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Heatmap Summary Stats -->
-                <div class="grid grid-cols-4 gap-2 mt-6 pt-4 border-t border-[#D9CBB8]/40 dark:border-[#3A3833] text-center">
+                <!-- Summary Telematics Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 sm:mt-6 pt-4 border-t border-[#D9CBB8]/40 dark:border-[#3A3833] text-center">
                     <div class="p-2 rounded-xl bg-[#FAF8F5] dark:bg-[#1A1917]">
-                        <span class="text-[10px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] uppercase block">Max Sensel</span>
-                        <span id="stat-max-temp" class="text-sm font-black font-mono text-[#E63946]">--.-°C</span>
+                        <span class="text-[10px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] uppercase block">Batch Total</span>
+                        <span class="text-xs sm:text-sm font-black font-mono text-[#3A3A3A] dark:text-[#F2EFE9]">{{ $chamber->egg_count ?? 120 }} Eggs</span>
                     </div>
                     <div class="p-2 rounded-xl bg-[#FAF8F5] dark:bg-[#1A1917]">
-                        <span class="text-[10px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] uppercase block">Min Sensel</span>
-                        <span id="stat-min-temp" class="text-sm font-black font-mono text-[#89B4C4]">--.-°C</span>
+                        <span class="text-[10px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] uppercase block">Incubation Day</span>
+                        <span class="text-xs sm:text-sm font-black font-mono text-[#89B4C4]">Day {{ $chamber->batch_day ?? 14 }} / 28</span>
                     </div>
                     <div class="p-2 rounded-xl bg-[#FAF8F5] dark:bg-[#1A1917]">
-                        <span class="text-[10px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] uppercase block">Avg Surface</span>
-                        <span id="stat-avg-temp" class="text-sm font-black font-mono text-[#3A3A3A] dark:text-[#F2EFE9]">--.-°C</span>
+                        <span class="text-[10px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] uppercase block">Batch Viability</span>
+                        <span id="stat-batch-viability" class="text-xs sm:text-sm font-black font-mono text-emerald-600 dark:text-emerald-400">{{ $viabilityRate }}%</span>
                     </div>
                     <div class="p-2 rounded-xl bg-[#FAF8F5] dark:bg-[#1A1917]">
-                        <span class="text-[10px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] uppercase block">Uniformity</span>
-                        <span id="stat-uniformity" class="text-sm font-black font-mono text-emerald-600 dark:text-emerald-400">98.4%</span>
+                        <span class="text-[10px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] uppercase block">Auto-Turner</span>
+                        <span class="text-xs sm:text-sm font-black font-mono text-amber-600 dark:text-amber-400">Active (45° Tilt)</span>
                     </div>
                 </div>
             </div>
@@ -367,26 +447,27 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#D9CBB8]/40 dark:border-[#3A3833]">
             <div>
                 <div class="flex items-center gap-2">
-                    <h2 class="text-lg font-black text-[#3A3A3A] dark:text-[#F2EFE9]">Embryo Vitality Classification Log</h2>
+                    <h2 class="text-lg font-black text-[#3A3A3A] dark:text-[#F2EFE9]">Batch Candling & Embryo Vitality Log</h2>
                     <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#FFC107]/20 text-[#1F1F1F] dark:text-[#FFC107]">
-                        Candling Audits
+                        Hatchery Audits
                     </span>
                 </div>
                 <p class="text-xs text-[#7A7A7A] dark:text-[#8E8B83] mt-0.5">
-                    Classified embryo vitality records (Viable vascular mesh vs. Non-viable infertile/blood ring) mapped to tray sensels
+                    Batch optical candling inspection history & embryo developmental milestones (Roxas Main Hatchery)
                 </p>
             </div>
 
-            <!-- Vitality Summary Badges & Quick Log Action -->
+            <!-- Vitality Summary Badges & Action -->
             <div class="flex items-center gap-3">
                 <div class="flex items-center gap-2 text-xs font-bold bg-[#FAF9F6] dark:bg-[#1A1917] px-3 py-1.5 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833]">
                     <span class="text-[#3A3A3A] dark:text-[#F2EFE9]">Viability Ratio:</span>
                     <span id="vitality-rate-text" class="text-emerald-600 dark:text-emerald-400 font-extrabold font-mono text-sm">{{ $viabilityRate }}%</span>
-                    <span class="text-[#7A7A7A] dark:text-[#8E8B83] font-normal">({{ $vitalityViable }}/{{ $vitalityTotal }} checked)</span>
+                    <span class="text-[#7A7A7A] dark:text-[#8E8B83] font-normal">({{ $vitalityViable }}/{{ $vitalityTotal }} audits)</span>
                 </div>
 
-                <button onclick="openVitalityModal()" class="egg-btn-primary py-2 px-3 text-xs rounded-xl font-bold">
-                    + Log Egg Candling
+                <button onclick="openVitalityModal()" class="egg-btn-primary py-2 px-3 text-xs rounded-xl font-bold flex items-center gap-1.5 shadow-sm">
+                    <span>🔬</span>
+                    <span>+ Log Candling Assessment</span>
                 </button>
             </div>
         </div>
@@ -398,10 +479,10 @@
                     <tr class="border-b border-[#D9CBB8] dark:border-[#3A3833] text-[#7A7A7A] dark:text-[#8E8B83] uppercase text-[10px] tracking-wider font-extrabold bg-[#FAF9F6] dark:bg-[#1A1917]">
                         <th class="py-3 px-4 rounded-l-xl">Timestamp</th>
                         <th class="py-3 px-4">Batch ID</th>
-                        <th class="py-3 px-4">Grid Sensel Position</th>
+                        <th class="py-3 px-4">Inspection Stage / Milestone</th>
                         <th class="py-3 px-4">Candling Day</th>
-                        <th class="py-3 px-4">Viability Result</th>
-                        <th class="py-3 px-4">Morphology / Diagnostic Notes</th>
+                        <th class="py-3 px-4">Batch Assessment</th>
+                        <th class="py-3 px-4">Optical Candling Diagnostic Notes</th>
                         <th class="py-3 px-4 text-right rounded-r-xl">Action</th>
                     </tr>
                 </thead>
@@ -410,22 +491,22 @@
                         <tr class="hover:bg-[#FAF8F5] dark:hover:bg-[#2A2824] transition">
                             <td class="py-3 px-4 text-gray-500 dark:text-gray-400 font-mono">{{ $vlog->created_at->format('M d, H:i:s') }}</td>
                             <td class="py-3 px-4 font-bold">{{ $vlog->batch_id }}</td>
-                            <td class="py-3 px-4 font-mono font-bold text-[#89B4C4]">{{ $vlog->grid_position }}</td>
+                            <td class="py-3 px-4 font-bold text-[#89B4C4]">{{ $vlog->grid_position }}</td>
                             <td class="py-3 px-4 font-mono">Day {{ $vlog->candling_day ?? 14 }}</td>
                             <td class="py-3 px-4">
                                 @if($vlog->result === 'viable')
                                     <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span>
-                                        VIABLE
+                                        OPTIMAL VIABILITY
                                     </span>
                                 @else
                                     <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-red-100 dark:bg-red-950/60 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800">
                                         <span class="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-400"></span>
-                                        NON-VIABLE
+                                        NON-VIABLE / CULLED
                                     </span>
                                 @endif
                             </td>
-                            <td class="py-3 px-4 text-gray-600 dark:text-gray-300 max-w-xs truncate">{{ $vlog->notes ?? 'Standard candling assessment' }}</td>
+                            <td class="py-3 px-4 text-gray-600 dark:text-gray-300 max-w-xs truncate">{{ $vlog->notes ?? 'Standard batch candling assessment' }}</td>
                             <td class="py-3 px-4 text-right">
                                 <button onclick="deleteVitalityLog({{ $vlog->id }})" class="text-gray-400 hover:text-red-600 font-bold p-1">
                                     ✕
@@ -434,7 +515,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="py-6 text-center text-gray-400">No vitality records found. Click "+ Log Egg Candling" to add one.</td>
+                            <td colspan="7" class="py-6 text-center text-gray-400">No candling records found. Click "+ Log Candling Assessment" to record one.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -444,13 +525,13 @@
 
 </div>
 
-<!-- Modal: Log Egg Vitality Result -->
+<!-- Modal: Record Batch Candling Assessment -->
 <div id="vitality-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="egg-card bg-white dark:bg-[#22201D] p-6 max-w-md w-full rounded-3xl border border-[#D9CBB8] dark:border-[#3A3833] shadow-2xl">
         <div class="flex items-center justify-between pb-3 border-b border-[#D9CBB8] dark:border-[#3A3833]">
             <div class="flex items-center gap-2">
                 <span class="text-xl">🔬</span>
-                <h3 class="font-extrabold text-base text-[#3A3A3A] dark:text-[#F2EFE9]">Log Embryo Candling Viability</h3>
+                <h3 class="font-extrabold text-base text-[#3A3A3A] dark:text-[#F2EFE9]">Record Batch Candling Assessment</h3>
             </div>
             <button onclick="closeVitalityModal()" class="text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 font-black text-lg">&times;</button>
         </div>
@@ -460,32 +541,32 @@
             <input type="hidden" name="batch_id" value="{{ $chamber->batch_name ?? 'BATCH-2026-D01' }}">
 
             <div>
-                <label class="block text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] uppercase tracking-wider mb-1">Tray Grid Position (Row 1-8, Col 1-8)</label>
-                <input type="text" id="vit-position" name="grid_position" placeholder="e.g. Row 3, Col 4" required class="w-full px-3 py-2 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#1A1917] text-[#3A3A3A] dark:text-[#F2EFE9] text-xs font-mono font-bold">
+                <label class="block text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] uppercase tracking-wider mb-1">Inspection Stage / Milestone</label>
+                <input type="text" id="vit-position" name="grid_position" value="Day {{ $chamber->batch_day ?? 14 }} Candling Assessment" placeholder="e.g. Day 14 Mid-Term Candling" required class="w-full px-3 py-2 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#1A1917] text-[#3A3A3A] dark:text-[#F2EFE9] text-xs font-mono font-bold">
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] uppercase tracking-wider mb-1">Viability Classification</label>
+                <label class="block text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] uppercase tracking-wider mb-1">Batch Viability Assessment</label>
                 <div class="grid grid-cols-2 gap-2">
                     <label class="p-3 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] flex items-center gap-2 cursor-pointer hover:border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20">
                         <input type="radio" name="result" value="viable" checked class="text-emerald-600 focus:ring-emerald-500">
-                        <span class="text-xs font-bold text-emerald-800 dark:text-emerald-300">✅ Viable</span>
+                        <span class="text-xs font-bold text-emerald-800 dark:text-emerald-300">✅ Viable (Normal)</span>
                     </label>
                     <label class="p-3 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] flex items-center gap-2 cursor-pointer hover:border-red-500 bg-red-50/50 dark:bg-red-950/20">
                         <input type="radio" name="result" value="non-viable" class="text-red-600 focus:ring-red-500">
-                        <span class="text-xs font-bold text-red-800 dark:text-red-300">❌ Non-Viable</span>
+                        <span class="text-xs font-bold text-red-800 dark:text-red-300">❌ Anomaly / Cull</span>
                     </label>
                 </div>
             </div>
 
             <div>
                 <label class="block text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] uppercase tracking-wider mb-1">Candling Day</label>
-                <input type="number" name="candling_day" value="{{ $chamber->batch_day }}" min="1" max="35" class="w-full px-3 py-2 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#1A1917] text-[#3A3A3A] dark:text-[#F2EFE9] text-xs font-mono font-bold">
+                <input type="number" name="candling_day" value="{{ $chamber->batch_day ?? 14 }}" min="1" max="35" class="w-full px-3 py-2 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#1A1917] text-[#3A3A3A] dark:text-[#F2EFE9] text-xs font-mono font-bold">
             </div>
 
             <div>
                 <label class="block text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] uppercase tracking-wider mb-1">Vascular / Embryonic Observations</label>
-                <textarea name="notes" rows="2" placeholder="e.g., Distinct spider vascular network observed, heart pulsating." class="w-full px-3 py-2 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#1A1917] text-[#3A3A3A] dark:text-[#F2EFE9] text-xs"></textarea>
+                <textarea name="notes" rows="2" placeholder="e.g. Robust chorioallantoic vascular network and active embryo movement confirmed via ESP32-CAM candling backlight." class="w-full px-3 py-2 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#1A1917] text-[#3A3A3A] dark:text-[#F2EFE9] text-xs"></textarea>
             </div>
 
             <div class="flex items-center justify-end gap-2 pt-3 border-t border-[#D9CBB8] dark:border-[#3A3833]">
@@ -493,7 +574,7 @@
                     Cancel
                 </button>
                 <button type="submit" class="egg-btn-primary px-4 py-2 rounded-xl text-xs font-bold">
-                    Save Record
+                    Save Assessment
                 </button>
             </div>
         </form>
@@ -506,82 +587,123 @@
     let currentChamberId = {{ $chamber->id }};
     let currentSetpoint = {{ (float) $chamber->setpoint }};
     let currentCritical = {{ (float) $chamber->critical_temp }};
+    let currentBatchDay = {{ (int) ($chamber->batch_day ?? 14) }};
     let streamInterval = null;
     let isStreamActive = true;
     let isAudioAlarmMuted = false;
     let thermalRunawayAlertActive = false;
-
-    let initialGrid = @json($latestReading->thermal_grid_json ?? []);
+    let lightingMode = 'standard';
+    const zoomLevels = [1.0, 1.4, 1.8];
+    let zoomIndex = 0;
 
     document.addEventListener('DOMContentLoaded', () => {
-        renderHeatmapGrid(initialGrid);
+        renderEggClutch();
         startPollingStream();
+        updateCameraClock();
+        setInterval(updateCameraClock, 1000);
     });
 
-    function renderHeatmapGrid(gridData) {
-        const container = document.getElementById('thermal-grid-container');
-        if (!container) return;
-
-        if (!Array.isArray(gridData) || gridData.length !== 64) {
-            gridData = new Array(64).fill(currentSetpoint);
-        }
-
-        container.innerHTML = '';
-        let maxVal = -Infinity;
-        let minVal = Infinity;
-        let sum = 0;
-
-        gridData.forEach((temp, index) => {
-            temp = parseFloat(temp);
-            maxVal = Math.max(maxVal, temp);
-            minVal = Math.min(minVal, temp);
-            sum += temp;
-
-            const row = Math.floor(index / 8) + 1;
-            const col = (index % 8) + 1;
-
-            const colorSpec = window.SmartPalao.getThermalColor(temp, currentSetpoint, currentCritical);
-
-            const cell = document.createElement('div');
-            cell.className = 'heatmap-cell';
-            cell.style.backgroundColor = colorSpec.bg;
-            cell.style.color = colorSpec.text;
-            cell.textContent = temp.toFixed(1);
-            cell.dataset.row = row;
-            cell.dataset.col = col;
-            cell.dataset.temp = temp.toFixed(2);
-            cell.dataset.label = colorSpec.label;
-
-            cell.addEventListener('mouseenter', () => inspectCell(row, col, temp, colorSpec));
-            cell.addEventListener('click', () => {
-                inspectCell(row, col, temp, colorSpec);
-                quickOpenCandleWithCoord(`Row ${row}, Col ${col}`);
-            });
-
-            container.appendChild(cell);
-        });
-
-        const avg = sum / 64;
-        document.getElementById('stat-max-temp').textContent = maxVal.toFixed(2) + '°C';
-        document.getElementById('stat-min-temp').textContent = minVal.toFixed(2) + '°C';
-        document.getElementById('stat-avg-temp').textContent = avg.toFixed(2) + '°C';
-
-        if (maxVal >= currentCritical) {
-            triggerThermalRunawayAlert(maxVal);
-        } else {
-            clearThermalRunawayAlert();
+    function updateCameraClock() {
+        const clockEl = document.getElementById('camera-hud-clock');
+        if (clockEl) {
+            clockEl.textContent = new Date().toTimeString().split(' ')[0];
         }
     }
 
-    function inspectCell(row, col, temp, colorSpec) {
-        document.getElementById('inspector-coord').textContent = `Sensel Coordinate: Row ${row}, Col ${col}`;
-        document.getElementById('inspector-temp').textContent = temp.toFixed(2) + '°C';
-        document.getElementById('inspector-color').style.backgroundColor = colorSpec.bg;
-        document.getElementById('inspector-status').textContent = colorSpec.label;
-        document.getElementById('inspector-status').style.color = colorSpec.bg === '#E63946' ? '#E63946' : '#89B4C4';
-        
-        const delta = (temp - currentSetpoint).toFixed(2);
-        document.getElementById('inspector-desc').textContent = `Offset from setpoint: ${delta > 0 ? '+' : ''}${delta}°C • Click to candle`;
+    function setLightingMode(mode) {
+        lightingMode = mode;
+        const btnStd = document.getElementById('btn-mode-standard');
+        const btnCandle = document.getElementById('btn-mode-candling');
+        const viewportBg = document.getElementById('camera-viewport-bg');
+        const hudLighting = document.getElementById('hud-lighting-label');
+
+        if (mode === 'candling') {
+            btnCandle.className = 'px-2.5 py-1 rounded-lg text-[11px] font-bold bg-[#FFC107] text-[#1F1F1F] shadow-sm transition flex items-center gap-1';
+            btnStd.className = 'px-2.5 py-1 rounded-lg text-[11px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] hover:text-[#3A3A3A] dark:hover:text-[#F2EFE9] transition flex items-center gap-1';
+            viewportBg.className = 'relative w-full min-h-[300px] sm:min-h-[360px] flex items-center justify-center p-6 transition-all duration-500 bg-[#080706] overflow-hidden';
+            hudLighting.textContent = '● OPTICAL CANDLING BACKLIGHT (VASCULAR GLOW)';
+            hudLighting.className = 'text-amber-500 font-bold';
+        } else {
+            btnStd.className = 'px-2.5 py-1 rounded-lg text-[11px] font-bold bg-white dark:bg-[#2D2B27] text-[#3A3A3A] dark:text-[#F2EFE9] shadow-sm transition flex items-center gap-1';
+            btnCandle.className = 'px-2.5 py-1 rounded-lg text-[11px] font-bold text-[#7A7A7A] dark:text-[#8E8B83] hover:text-[#3A3A3A] dark:hover:text-[#F2EFE9] transition flex items-center gap-1';
+            viewportBg.className = 'relative w-full min-h-[300px] sm:min-h-[360px] flex items-center justify-center p-6 transition-all duration-500 bg-gradient-to-b from-[#252320] via-[#1B1917] to-[#11100F] overflow-hidden';
+            hudLighting.textContent = '● DAYLIGHT INSPECTION LED (5500K)';
+            hudLighting.className = 'text-amber-400 font-bold';
+        }
+
+        renderEggClutch();
+    }
+
+    function cycleZoom() {
+        zoomIndex = (zoomIndex + 1) % zoomLevels.length;
+        const currentZoom = zoomLevels[zoomIndex];
+        const layer = document.getElementById('camera-zoom-layer');
+        const btn = document.getElementById('btn-zoom');
+        if (layer) {
+            layer.style.transform = `scale(${currentZoom})`;
+        }
+        if (btn) {
+            btn.textContent = `${currentZoom.toFixed(1)}x`;
+        }
+    }
+
+    function renderEggClutch() {
+        const container = document.getElementById('egg-clutch-display');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const eggConfig = [
+            { rot: -10, scale: 1.0 },
+            { rot: 6, scale: 1.02 },
+            { rot: -5, scale: 0.98 },
+            { rot: 12, scale: 1.04 },
+            { rot: -8, scale: 1.0 },
+            { rot: 15, scale: 1.02 },
+            { rot: -14, scale: 0.99 },
+            { rot: 4, scale: 1.01 },
+            { rot: -3, scale: 1.03 },
+            { rot: 9, scale: 0.98 },
+            { rot: -7, scale: 1.0 },
+            { rot: 11, scale: 1.02 },
+        ];
+
+        eggConfig.forEach((cfg) => {
+            const egg = document.createElement('div');
+            egg.className = 'relative w-12 h-16 sm:w-14 sm:h-20 transition-all duration-500 rounded-[50%/60%_60%_40%_40%]';
+            egg.style.transform = `rotate(${cfg.rot}deg) scale(${cfg.scale})`;
+
+            if (lightingMode === 'candling') {
+                egg.style.background = 'radial-gradient(circle at 45% 45%, #FFE082 0%, #FF9800 45%, #BF360C 95%)';
+                egg.style.boxShadow = '0 0 22px rgba(255, 152, 0, 0.7)';
+                egg.innerHTML = `
+                    <svg class="w-full h-full p-2 opacity-85 pointer-events-none" viewBox="0 0 100 100">
+                        <circle cx="48" cy="46" r="9" fill="#5D1005" opacity="0.9" />
+                        <circle cx="49" cy="45" r="3.5" fill="#2A0502" />
+                        <path d="M48,46 Q35,35 24,30 M48,46 Q38,55 22,65 M48,46 Q60,38 76,32 M48,46 Q62,58 78,68 M48,46 Q46,25 45,15 M48,46 Q50,70 52,85" stroke="#7A180C" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                        <path d="M24,30 Q17,25 11,28 M22,65 Q15,72 9,70 M76,32 Q86,28 89,34 M78,68 Q85,76 90,74" stroke="#9E2A2B" stroke-width="1.5" fill="none" stroke-linecap="round" />
+                    </svg>
+                `;
+            } else {
+                egg.style.background = 'radial-gradient(circle at 35% 35%, #FFFFFF 0%, #F5EFEB 50%, #D8CABB 100%)';
+                egg.style.boxShadow = 'inset -2px -4px 6px rgba(0,0,0,0.22), 0 5px 8px rgba(0,0,0,0.5)';
+            }
+
+            container.appendChild(egg);
+        });
+    }
+
+    function takeCameraSnapshot() {
+        const vp = document.getElementById('camera-viewport-bg');
+        if (vp) {
+            const flash = document.createElement('div');
+            flash.className = 'absolute inset-0 bg-white z-50 transition-opacity duration-300 opacity-90 pointer-events-none';
+            vp.appendChild(flash);
+            setTimeout(() => {
+                flash.classList.add('opacity-0');
+                setTimeout(() => flash.remove(), 300);
+            }, 50);
+        }
+        window.SmartPalao.cart.showToast('📸 ESP32-CAM optical frame saved to chamber inspection archive.');
     }
 
     function triggerThermalRunawayAlert(maxTemp) {
@@ -678,8 +800,10 @@
 
                 document.getElementById('fan-status-text').textContent = `🌀 ${ch.fan_pwm}%`;
 
-                if (r.thermal_grid) {
-                    renderHeatmapGrid(r.thermal_grid);
+                if (r.ambient_temp >= currentCritical) {
+                    triggerThermalRunawayAlert(r.ambient_temp);
+                } else {
+                    clearThermalRunawayAlert();
                 }
             })
             .catch(err => console.error('Telemetry fetch error:', err));
@@ -793,7 +917,7 @@
             if (data.success) {
                 closeVitalityModal();
                 form.reset();
-                window.SmartPalao.cart.showToast(`Egg candling result recorded (${payload.result.toUpperCase()})`);
+                window.SmartPalao.cart.showToast(`Batch candling assessment recorded (${payload.result.toUpperCase()})`);
                 reloadVitalityTable();
             }
         });
@@ -814,15 +938,15 @@
                     tr.innerHTML = `
                         <td class="py-3 px-4 text-gray-500 dark:text-gray-400 font-mono">${new Date(log.created_at).toLocaleString()}</td>
                         <td class="py-3 px-4 font-bold text-[#3A3A3A] dark:text-[#F2EFE9]">${log.batch_id}</td>
-                        <td class="py-3 px-4 font-mono font-bold text-[#89B4C4]">${log.grid_position}</td>
+                        <td class="py-3 px-4 font-bold text-[#89B4C4]">${log.grid_position}</td>
                         <td class="py-3 px-4 font-mono">${log.candling_day ? 'Day ' + log.candling_day : 'Day 14'}</td>
                         <td class="py-3 px-4">
                             <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-bold text-[10px] ${isViable ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800' : 'bg-red-100 dark:bg-red-950/60 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800'}">
                                 <span class="w-1.5 h-1.5 rounded-full ${isViable ? 'bg-emerald-600 dark:bg-emerald-400' : 'bg-red-600 dark:bg-red-400'}"></span>
-                                ${log.result.toUpperCase()}
+                                ${isViable ? 'OPTIMAL VIABILITY' : 'NON-VIABLE / CULLED'}
                             </span>
                         </td>
-                        <td class="py-3 px-4 text-gray-600 dark:text-gray-300 max-w-xs truncate">${log.notes || 'Standard candling assessment'}</td>
+                        <td class="py-3 px-4 text-gray-600 dark:text-gray-300 max-w-xs truncate">${log.notes || 'Standard batch candling assessment'}</td>
                         <td class="py-3 px-4 text-right">
                             <button onclick="deleteVitalityLog(${log.id})" class="text-gray-400 hover:text-red-600 font-bold p-1">✕</button>
                         </td>
@@ -830,7 +954,11 @@
                     tbody.appendChild(tr);
                 });
 
-                document.getElementById('vitality-rate-text').textContent = data.stats.viability_rate + '%';
+                const rate = data.stats.viability_rate + '%';
+                const el1 = document.getElementById('vitality-rate-text');
+                const el2 = document.getElementById('stat-batch-viability');
+                if (el1) el1.textContent = rate;
+                if (el2) el2.textContent = rate;
             });
     }
 

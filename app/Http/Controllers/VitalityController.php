@@ -59,11 +59,16 @@ class VitalityController extends Controller
         $validated = $request->validate([
             'chamber_id' => 'required|exists:chambers,id',
             'batch_id' => 'required|string|max:50',
-            'grid_position' => 'required|string|max:20', // e.g. "Row 4, Col 2" or "D2"
+            'grid_position' => 'nullable|string|max:100',
             'result' => 'required|in:viable,non-viable',
             'candling_day' => 'nullable|integer|between:1,35',
             'notes' => 'nullable|string|max:500',
         ]);
+
+        if (empty($validated['grid_position'])) {
+            $day = $validated['candling_day'] ?? 14;
+            $validated['grid_position'] = "Day {$day} Candling Inspection";
+        }
 
         $log = VitalityLog::create($validated);
 

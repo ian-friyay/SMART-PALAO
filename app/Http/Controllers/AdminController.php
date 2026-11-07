@@ -20,7 +20,7 @@ class AdminController extends Controller
         if (!$chamber) {
             $chamber = Chamber::create([
                 'name' => 'Incubator Alpha',
-                'location' => 'Gloria (Main Farm)',
+                'location' => 'Roxas (Main Hatchery)',
                 'setpoint' => 37.50,
                 'critical_temp' => 38.50,
                 'heater_state' => true,
@@ -54,7 +54,7 @@ class AdminController extends Controller
      */
     public function inventory(Request $request)
     {
-        $productsGloria = Product::where('branch_location', 'Gloria')
+        $productsRoxas = Product::where('branch_location', 'Roxas')
             ->orderByRaw("CASE size WHEN 'Large' THEN 1 WHEN 'Medium' THEN 2 WHEN 'Small' THEN 3 ELSE 4 END")
             ->get();
 
@@ -62,7 +62,7 @@ class AdminController extends Controller
             ->orderByRaw("CASE size WHEN 'Large' THEN 1 WHEN 'Medium' THEN 2 WHEN 'Small' THEN 3 ELSE 4 END")
             ->get();
 
-        return view('admin.inventory', compact('productsGloria', 'productsBoracay'));
+        return view('admin.inventory', compact('productsRoxas', 'productsBoracay'));
     }
 
     /**
@@ -132,7 +132,7 @@ class AdminController extends Controller
         $branchFilter = $request->input('branch', 'all');
 
         $query = Order::with('items')->latest();
-        if ($branchFilter !== 'all' && in_array($branchFilter, ['Gloria', 'Boracay'])) {
+        if ($branchFilter !== 'all' && in_array($branchFilter, ['Roxas', 'Boracay'])) {
             $query->where('branch_location', $branchFilter);
         }
 

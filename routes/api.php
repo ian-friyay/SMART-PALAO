@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // ==========================================
 // 1. ESP32 Microcontroller Ingestion (Lightweight & High Performance)
 // ==========================================
-// Microcontroller pushes AMG8833 8x8 matrix + SHT31 ambient & humidity data
+// Microcontroller pushes SHT31 ambient temp & humidity + status data
 Route::post('/telemetry/push', [TelemetryController::class, 'push'])->name('api.telemetry.push');
 
 // Real-time telemetry query endpoints (supports initial load and polling fallback)

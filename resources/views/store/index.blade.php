@@ -6,40 +6,40 @@
 <div class="space-y-12 pb-16">
 
     <!-- Hero Section: Minimalist Egg Vibe -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-[#FAF9F6] to-[#F4F1EA] dark:from-[#1C1B19] dark:to-[#161513] py-16 border-b border-[#D9CBB8] dark:border-[#3A3833] transition-colors duration-200">
+    <section class="relative overflow-hidden bg-gradient-to-b from-[#FAF9F6] to-[#F4F1EA] dark:from-[#1C1B19] dark:to-[#161513] py-10 sm:py-16 border-b border-[#D9CBB8] dark:border-[#3A3833] transition-colors duration-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFC107]/20 border border-[#FFC107]/40 text-[#3A3A3A] dark:text-[#F2EFE9] text-xs font-bold">
-                        <span class="w-2 h-2 rounded-full bg-[#FFC107] animate-pulse"></span>
-                        <span>IoT Incubated • AMG8833 Calibrated • 100% Free-Range Palao Ducks</span>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-7 space-y-5 sm:space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-[#FFC107]/20 border border-[#FFC107]/40 text-[#3A3A3A] dark:text-[#F2EFE9] text-[11px] sm:text-xs font-bold">
+                        <span class="w-2 h-2 rounded-full bg-[#FFC107] animate-pulse shrink-0"></span>
+                        <span class="truncate sm:whitespace-normal">IoT Incubated • ESP32-CAM Monitored • 100% Free-Range</span>
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight leading-[1.1]">
-                        Peak Quality Duck Eggs, Guided by <span class="text-[#FFC107] underline decoration-[#D9CBB8] dark:decoration-[#48443E]">Thermal IoT</span>.
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight leading-[1.15]">
+                        Peak Quality Duck Eggs, Guided by <span class="text-[#FFC107] underline decoration-[#D9CBB8] dark:decoration-[#48443E]">Precision IoT</span>.
                     </h1>
 
-                    <p class="text-base text-[#5A5A5A] dark:text-[#A8A49C] max-w-xl leading-relaxed font-medium">
-                        Welcome to Smart Palao. We combine generations of Philippine duck farming heritage in Gloria, Oriental Mindoro with modern 64-sensel thermal telemetry and precision humidity regulation to produce the richest, most consistent duck eggs in the country.
+                    <p class="text-sm sm:text-base text-[#5A5A5A] dark:text-[#A8A49C] max-w-xl leading-relaxed font-medium">
+                        Welcome to Smart Palao. We combine generations of Philippine duck farming heritage in Roxas, Oriental Mindoro with modern optical camera telematics and precision humidity regulation to produce the richest, most consistent duck eggs in the country.
                     </p>
 
                     <!-- Fulfillment Hub Selection Bar -->
-                    <div class="p-4 rounded-2xl bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm max-w-lg transition-colors">
-                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-[#7A7A7A] dark:text-[#8E8B83] block mb-2">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm max-w-lg transition-colors">
+                        <span class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-[#7A7A7A] dark:text-[#8E8B83] block mb-2">
                             Select Your Nearest Fulfillment Branch:
                         </span>
-                        <div class="grid grid-cols-2 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                             <form action="{{ route('store.setBranch') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="branch" value="Gloria">
-                                <button type="submit" class="w-full p-3 rounded-xl border text-left transition flex flex-col justify-between {{ $selectedBranch === 'Gloria' ? 'border-[#FFC107] bg-[#FFF8E1] dark:bg-[#2A261A] shadow-sm ring-2 ring-[#FFC107]/30' : 'border-[#D9CBB8] dark:border-[#3A3833] bg-[#FAF8F5] dark:bg-[#1C1B19] hover:bg-white dark:hover:bg-[#24221F]' }}">
+                                <input type="hidden" name="branch" value="Roxas">
+                                <button type="submit" class="w-full p-3 rounded-xl border text-left transition flex flex-col justify-between {{ $selectedBranch === 'Roxas' ? 'border-[#FFC107] bg-[#FFF8E1] dark:bg-[#2A261A] shadow-sm ring-2 ring-[#FFC107]/30' : 'border-[#D9CBB8] dark:border-[#3A3833] bg-[#FAF8F5] dark:bg-[#1C1B19] hover:bg-white dark:hover:bg-[#24221F]' }}">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-bold text-xs text-[#3A3A3A] dark:text-[#F2EFE9]">Gloria (Main Farm)</span>
-                                        @if($selectedBranch === 'Gloria')
+                                        <span class="font-bold text-xs text-[#3A3A3A] dark:text-[#F2EFE9]">🌾 Roxas (Main Hatchery)</span>
+                                        @if($selectedBranch === 'Roxas')
                                             <span class="w-2 h-2 rounded-full bg-[#FFC107]"></span>
                                         @endif
                                     </div>
-                                    <span class="text-[10px] text-gray-500 dark:text-gray-400 mt-1">Oriental Mindoro Hub</span>
+                                    <span class="text-[10px] text-gray-500 dark:text-gray-400 mt-1">Oriental Mindoro Farm Hub</span>
                                 </button>
                             </form>
 
@@ -48,21 +48,21 @@
                                 <input type="hidden" name="branch" value="Boracay">
                                 <button type="submit" class="w-full p-3 rounded-xl border text-left transition flex flex-col justify-between {{ $selectedBranch === 'Boracay' ? 'border-[#89B4C4] bg-[#EBF3F6] dark:bg-[#1B2529] shadow-sm ring-2 ring-[#89B4C4]/30' : 'border-[#D9CBB8] dark:border-[#3A3833] bg-[#FAF8F5] dark:bg-[#1C1B19] hover:bg-white dark:hover:bg-[#24221F]' }}">
                                     <div class="flex items-center justify-between">
-                                        <span class="font-bold text-xs text-[#3A3A3A] dark:text-[#F2EFE9]">Boracay Island Depot</span>
+                                        <span class="font-bold text-xs text-[#3A3A3A] dark:text-[#F2EFE9]">🏖️ Boracay Island Depot</span>
                                         @if($selectedBranch === 'Boracay')
                                             <span class="w-2 h-2 rounded-full bg-[#89B4C4]"></span>
                                         @endif
                                     </div>
-                                    <span class="text-[10px] text-gray-500 dark:text-gray-400 mt-1">Malay, Aklan Express</span>
+                                    <span class="text-[10px] text-gray-500 dark:text-gray-400 mt-1">Fulfillment & Delivery Only</span>
                                 </button>
                             </form>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Visual: Clean Egg Vibe Visual Card with Logo -->
+                <!-- Right Visual: Live Camera Telemetry Card -->
                 <div class="lg:col-span-5">
-                    <div class="egg-card p-6 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl shadow-xl relative overflow-hidden">
+                    <div class="egg-card p-5 sm:p-6 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl shadow-xl relative overflow-hidden">
                         <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-[#FFC107]/20 blur-2xl pointer-events-none"></div>
                         <div class="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-[#89B4C4]/20 blur-2xl pointer-events-none"></div>
 
@@ -70,27 +70,45 @@
                             <div class="flex items-center gap-3">
                                 <img src="{{ asset('images/smart-palao-logo.png') }}" alt="Smart Palao" class="w-10 h-10 object-contain rounded-full shadow-sm">
                                 <div>
-                                    <span class="text-[10px] uppercase font-bold tracking-wider text-[#89B4C4]">Incubation Chamber Alpha</span>
-                                    <h3 class="font-extrabold text-sm text-[#3A3A3A] dark:text-[#F2EFE9]">Real-Time Quality Metrics</h3>
+                                    <span class="text-[10px] uppercase font-bold tracking-wider text-[#89B4C4]">Roxas Hatchery Alpha</span>
+                                    <h3 class="font-extrabold text-xs sm:text-sm text-[#3A3A3A] dark:text-[#F2EFE9]">Live Camera Telemetry</h3>
                                 </div>
                             </div>
-                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300">
-                                99.1% Shell Grade
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 shrink-0 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>LIVE HD</span>
                             </span>
                         </div>
 
-                        <!-- Micro Grid Simulation Display -->
-                        <div class="my-5 p-4 rounded-2xl bg-[#FAF9F6] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833]">
-                            <div class="flex items-center justify-between text-xs mb-3">
-                                <span class="font-bold text-[#3A3A3A] dark:text-[#F2EFE9]">AMG8833 Thermal Sensel Trace</span>
-                                <span class="font-mono text-[11px] text-[#FFC107] font-bold">37.52°C Optimal</span>
+                        <!-- Live Camera Optical Preview Box -->
+                        <div class="my-5 p-3 rounded-2xl bg-[#1C1B19] border border-[#D9CBB8] dark:border-[#3A3833] relative overflow-hidden shadow-inner">
+                            <div class="flex items-center justify-between text-xs mb-2 px-1">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-rose-500 font-black animate-pulse">●</span>
+                                    <span class="font-mono text-[11px] font-bold text-gray-200">ESP32-CAM Tray 1</span>
+                                </div>
+                                <span class="font-mono text-[10px] text-[#FFC107] font-bold">37.5°C • 65.2% RH</span>
                             </div>
-                            <div class="grid grid-cols-8 gap-1 aspect-[8/2]">
-                                @for($i = 0; $i < 16; $i++)
-                                    <div class="rounded bg-[#FFC107]/{{ 60 + ($i % 4) * 10 }} border border-[#D9CBB8]/50 dark:border-[#48443E] h-5 flex items-center justify-center text-[9px] font-mono font-bold text-[#1F1F1F]">
-                                        {{ 37.4 + ($i % 3) * 0.1 }}
-                                    </div>
-                                @endfor
+
+                            <!-- Egg Tray Visual Simulation -->
+                            <div class="relative bg-gradient-to-b from-[#2B2823] to-[#1E1C18] rounded-xl p-4 border border-[#3A3833] overflow-hidden">
+                                <!-- Roller Rails -->
+                                <div class="absolute inset-x-3 inset-y-4 flex flex-col justify-between pointer-events-none opacity-25">
+                                    <div class="h-1 bg-[#D9CBB8] rounded-full"></div>
+                                    <div class="h-1 bg-[#D9CBB8] rounded-full"></div>
+                                    <div class="h-1 bg-[#D9CBB8] rounded-full"></div>
+                                </div>
+
+                                <!-- Natural Clutch of Duck Eggs on Tray -->
+                                <div class="relative z-10 flex flex-wrap items-center justify-center gap-2.5 py-1">
+                                    @for($e = 1; $e <= 10; $e++)
+                                        <div class="w-7 h-9 sm:w-8 sm:h-10 rounded-full shadow-md transition-transform hover:scale-105" style="background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #F5EFEB 55%, #D8CABB 100%); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;"></div>
+                                    @endfor
+                                </div>
+                                <div class="mt-2.5 pt-2 border-t border-[#3A3833] flex items-center justify-between text-[10px] font-mono text-gray-400">
+                                    <span>Inspection Mode: Daylight 5500K</span>
+                                    <span class="text-emerald-400">● 100% Membrane Equilibrium</span>
+                                </div>
                             </div>
                         </div>
 
@@ -100,8 +118,8 @@
                                 <span class="font-bold text-[#3A3A3A] dark:text-[#F2EFE9]">📍 {{ $selectedBranch }}</span>
                             </div>
                             <div class="flex items-center justify-between py-1.5 border-b border-gray-100 dark:border-[#2F2D29]">
-                                <span class="text-gray-500 dark:text-gray-400">Egg Shell Membrane Moisture:</span>
-                                <span class="font-bold text-[#89B4C4]">65.2% Equilibrium</span>
+                                <span class="text-gray-500 dark:text-gray-400">IoT Incubation Source:</span>
+                                <span class="font-bold text-[#89B4C4]">Roxas Main Hatchery</span>
                             </div>
                             <div class="flex items-center justify-between py-1.5">
                                 <span class="text-gray-500 dark:text-gray-400">Freshness & Fertility Rating:</span>
@@ -129,18 +147,18 @@
                 <span class="text-xs text-[#7A7A7A] dark:text-[#8E8B83]">Change branch:</span>
                 <form action="{{ route('store.setBranch') }}" method="POST" class="inline">
                     @csrf
-                    <input type="hidden" name="branch" value="{{ $selectedBranch === 'Gloria' ? 'Boracay' : 'Gloria' }}">
+                    <input type="hidden" name="branch" value="{{ $selectedBranch === 'Roxas' ? 'Boracay' : 'Roxas' }}">
                     <button type="submit" class="px-3.5 py-1.5 rounded-xl border border-[#D9CBB8] dark:border-[#3A3833] bg-white dark:bg-[#22201D] text-xs font-bold text-[#3A3A3A] dark:text-[#F2EFE9] hover:bg-[#FAF8F5] dark:hover:bg-[#2D2B27] transition shadow-sm">
-                        Switch to {{ $selectedBranch === 'Gloria' ? 'Boracay' : 'Gloria' }}
+                        Switch to {{ $selectedBranch === 'Roxas' ? 'Boracay' : 'Roxas' }}
                     </button>
                 </form>
             </div>
         </div>
 
         <!-- 3 Product Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             @forelse($products as $product)
-                <div class="egg-card bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between relative group">
+                <div class="egg-card bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between relative group">
                     <!-- Top Egg Badge -->
                     <div class="flex items-start justify-between">
                         <div class="w-16 h-16 rounded-2xl bg-[#FFF8E1] dark:bg-[#2D2817] border border-[#FFC107]/40 flex items-center justify-center text-3xl shadow-sm">
@@ -198,8 +216,8 @@
     </section>
 
     <!-- Why Smart Palao: IoT Egg Incubation Story -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-        <div class="egg-card p-8 md:p-12 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl shadow-sm">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
+        <div class="egg-card p-5 sm:p-8 md:p-12 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl shadow-sm">
             <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="text-xs font-bold uppercase tracking-widest text-[#FFC107]">The Smart Palao Difference</span>
                 <h2 class="text-3xl font-black text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight mt-1">Why IoT Incubation Changes Everything</h2>
@@ -212,11 +230,11 @@
                 <!-- Pillar 1 -->
                 <div class="p-5 rounded-2xl bg-[#FAF9F6] dark:bg-[#1C1B19] border border-[#D9CBB8] dark:border-[#3A3833] space-y-3">
                     <div class="w-10 h-10 rounded-xl bg-[#89B4C4]/20 text-[#3D6677] dark:text-[#89B4C4] flex items-center justify-center font-black text-lg">
-                        📡
+                        📷
                     </div>
-                    <h3 class="font-extrabold text-sm text-[#3A3A3A] dark:text-[#F2EFE9]">AMG8833 Thermal Imaging</h3>
+                    <h3 class="font-extrabold text-sm text-[#3A3A3A] dark:text-[#F2EFE9]">ESP32-CAM Visual Telemetry</h3>
                     <p class="text-xs text-[#5A5A5A] dark:text-[#A8A49C] leading-relaxed">
-                        Rather than single-point probes, an 8x8 infrared sensor array maps surface heat dissipation across 64 tray sectors, preventing lethal hot spots.
+                        An optical high-definition camera stream provides continuous visual monitoring of the egg incubation tray, embryo movements, and eggshell integrity.
                     </p>
                 </div>
 

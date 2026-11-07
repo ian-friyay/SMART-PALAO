@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('password123'),
                 'role' => 'owner',
                 'phone' => '+63 917 888 2026',
-                'address' => 'Palao Farmstead, Gloria, Oriental Mindoro, Philippines',
+                'address' => 'Palao Farmstead, Roxas, Oriental Mindoro, Philippines',
             ]
         );
 
@@ -42,11 +42,11 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 2. Chambers
+        // 2. Chambers (Located exclusively at Roxas Main Hatchery)
         $chamber1 = Chamber::firstOrCreate(
-            ['name' => 'Incubator Alpha (Gloria Main)'],
+            ['name' => 'Incubator Alpha (Roxas Main)'],
             [
-                'location' => 'Gloria (Main Farm)',
+                'location' => 'Roxas (Main Hatchery)',
                 'setpoint' => 37.50,
                 'critical_temp' => 38.50,
                 'heater_state' => true,
@@ -56,14 +56,15 @@ class DatabaseSeeder extends Seeder
                 'batch_day' => 14,
                 'duck_breed' => 'Pateros Mallard (Itik Pinas)',
                 'egg_count' => 120,
+                'camera_stream_url' => 'http://192.168.1.120:81/stream',
                 'api_key' => 'palao_esp32_secret_key_2026',
             ]
         );
 
         $chamber2 = Chamber::firstOrCreate(
-            ['name' => 'Hatcher Beta (Gloria Unit 2)'],
+            ['name' => 'Hatcher Beta (Roxas Unit 2)'],
             [
-                'location' => 'Gloria (Main Farm)',
+                'location' => 'Roxas (Main Hatchery)',
                 'setpoint' => 37.00,
                 'critical_temp' => 38.20,
                 'heater_state' => false,
@@ -73,33 +74,34 @@ class DatabaseSeeder extends Seeder
                 'batch_day' => 26,
                 'duck_breed' => 'Pateros Mallard (Itik Pinas)',
                 'egg_count' => 96,
+                'camera_stream_url' => 'http://192.168.1.121:81/stream',
                 'api_key' => 'palao_esp32_beta_secret',
             ]
         );
 
-        // 3. Products per branch (Gloria & Boracay)
+        // 3. Products per branch (Roxas & Boracay)
         $catalog = [
-            // Gloria Branch
+            // Roxas Branch (Main Farm & Hatchery)
             [
-                'branch_location' => 'Gloria',
+                'branch_location' => 'Roxas',
                 'size' => 'Large',
                 'price' => 180.00, // per dozen
                 'stock' => 180,
                 'weight_range' => '65g - 75g per egg',
-                'description' => 'Grade-A jumbo duck eggs from free-range Gloria farm paddocks. Superb yolk density, ideal for gourmet cooking, salting, or premium balut.',
+                'description' => 'Grade-A jumbo duck eggs from free-range Roxas farm paddocks. Superb yolk density, ideal for gourmet cooking, salting, or premium balut.',
                 'image_url' => '/images/egg-large.png',
             ],
             [
-                'branch_location' => 'Gloria',
+                'branch_location' => 'Roxas',
                 'size' => 'Medium',
                 'price' => 150.00,
                 'stock' => 260,
                 'weight_range' => '55g - 64g per egg',
-                'description' => 'Standard premium duck eggs carefully calibrated in our IoT incubation hatchery for peak membrane freshness and fertility.',
+                'description' => 'Standard premium duck eggs carefully incubated with real-time camera inspection for peak membrane freshness and fertility.',
                 'image_url' => '/images/egg-medium.png',
             ],
             [
-                'branch_location' => 'Gloria',
+                'branch_location' => 'Roxas',
                 'size' => 'Small',
                 'price' => 120.00,
                 'stock' => 110,
@@ -107,7 +109,7 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Nutrient-rich pullet duck eggs from young hens. Excellent value pack for daily farm-to-table breakfast and baking.',
                 'image_url' => '/images/egg-small.png',
             ],
-            // Boracay Branch
+            // Boracay Branch (Retail & Depot Fulfillment)
             [
                 'branch_location' => 'Boracay',
                 'size' => 'Large',
@@ -123,7 +125,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 180.00,
                 'stock' => 140,
                 'weight_range' => '55g - 64g per egg',
-                'description' => 'Fresh island stock of medium duck eggs with rich golden yolk. Sourced directly from our Gloria incubation hub.',
+                'description' => 'Fresh island stock of medium duck eggs with rich golden yolk. Sourced directly from our Roxas incubation hub.',
                 'image_url' => '/images/egg-medium.png',
             ],
             [
@@ -173,21 +175,13 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // 5. Vitality Logs (Embryo candling results)
+        // 5. Vitality Logs (Embryo candling results via visual inspection)
         VitalityLog::where('chamber_id', $chamber1->id)->delete();
         $candlingData = [
-            ['grid_position' => 'Row 1, Col 1', 'result' => 'viable', 'notes' => 'Distinct heart pulsation and dark eye spot visible.'],
-            ['grid_position' => 'Row 1, Col 4', 'result' => 'viable', 'notes' => 'Strong spider vascular web filling 60% of egg.'],
-            ['grid_position' => 'Row 2, Col 3', 'result' => 'viable', 'notes' => 'Active embryo movement under high-intensity LED.'],
-            ['grid_position' => 'Row 2, Col 7', 'result' => 'non-viable', 'notes' => 'Blood ring detected. Early embryonic cessation.'],
-            ['grid_position' => 'Row 3, Col 2', 'result' => 'viable', 'notes' => 'Dense vascularization, clear air cell boundary.'],
-            ['grid_position' => 'Row 3, Col 5', 'result' => 'viable', 'notes' => 'Normal 14-day duck embryo size, clear allantois.'],
-            ['grid_position' => 'Row 4, Col 4', 'result' => 'viable', 'notes' => 'Core cluster egg showing excellent thermal emission.'],
-            ['grid_position' => 'Row 5, Col 2', 'result' => 'non-viable', 'notes' => 'Clear / Infertile egg. Transferred out of chamber.'],
-            ['grid_position' => 'Row 5, Col 6', 'result' => 'viable', 'notes' => 'Vigorous vascular tree, well-defined air pocket.'],
-            ['grid_position' => 'Row 6, Col 3', 'result' => 'viable', 'notes' => 'Excellent embryo development, responsive to candling.'],
-            ['grid_position' => 'Row 7, Col 5', 'result' => 'viable', 'notes' => 'Optimal development corresponding to Day 14.'],
-            ['grid_position' => 'Row 8, Col 2', 'result' => 'viable', 'notes' => 'Embryo active with robust blood vessels.'],
+            ['grid_position' => 'Day 14 Mid-Term Candling (Batch Assessment)', 'candling_day' => 14, 'result' => 'viable', 'notes' => 'ESP32-CAM optical candling confirms 95% viable embryo development with robust chorioallantoic vascular networks across the clutch.'],
+            ['grid_position' => 'Day 10 Vascular Web Audit', 'candling_day' => 10, 'result' => 'viable', 'notes' => 'Strong spider blood vessel branches clearly visible under candling backlight. Air cells well-formed and stable.'],
+            ['grid_position' => 'Day 7 Fertility Screening (Initial Candling)', 'candling_day' => 7, 'result' => 'viable', 'notes' => 'Embryonic heart pulsation confirmed under camera magnification. 6 infertile / clear eggs culled from tray.'],
+            ['grid_position' => 'Day 3 Pre-Incubation Quality Check', 'candling_day' => 3, 'result' => 'viable', 'notes' => 'Egg shell integrity and membrane density verified under white LED inspection before setter phase.'],
         ];
 
         foreach ($candlingData as $cd) {
@@ -196,23 +190,23 @@ class DatabaseSeeder extends Seeder
                 'batch_id' => 'BATCH-2026-D01',
                 'grid_position' => $cd['grid_position'],
                 'result' => $cd['result'],
-                'candling_day' => 14,
+                'candling_day' => $cd['candling_day'],
                 'notes' => $cd['notes'],
             ]);
         }
 
         // 6. Sample Orders across Kanban stages
-        Order::whereIn('customer_email', ['buyer@gmail.com', 'hotel@boracayhaven.com', 'chef@gloriabistro.ph'])->delete();
+        Order::whereIn('customer_email', ['buyer@gmail.com', 'hotel@boracayhaven.com', 'chef@roxasbistro.ph'])->delete();
 
         $sampleOrders = [
             [
-                'order_number' => 'SP-GLO-20261103-A101',
+                'order_number' => 'SP-ROX-20261103-A101',
                 'user_id' => $buyer->id,
-                'branch_location' => 'Gloria',
+                'branch_location' => 'Roxas',
                 'customer_name' => 'Maria Santos',
                 'customer_email' => 'buyer@gmail.com',
                 'customer_phone' => '+63 928 555 7788',
-                'delivery_address' => 'Barangay Maligaya, Gloria, Oriental Mindoro',
+                'delivery_address' => 'Barangay Paclasan, Roxas, Oriental Mindoro',
                 'payment_method' => 'GCash',
                 'status' => 'Pending',
                 'total_amount' => 510.00,
@@ -259,13 +253,13 @@ class DatabaseSeeder extends Seeder
                 ]
             ],
             [
-                'order_number' => 'SP-GLO-20261101-D404',
+                'order_number' => 'SP-ROX-20261101-D404',
                 'user_id' => $buyer->id,
-                'branch_location' => 'Gloria',
+                'branch_location' => 'Roxas',
                 'customer_name' => 'Maria Santos',
                 'customer_email' => 'buyer@gmail.com',
                 'customer_phone' => '+63 928 555 7788',
-                'delivery_address' => 'Barangay Maligaya, Gloria, Oriental Mindoro',
+                'delivery_address' => 'Barangay Paclasan, Roxas, Oriental Mindoro',
                 'payment_method' => 'Cash on Delivery',
                 'status' => 'Delivered',
                 'total_amount' => 330.00,

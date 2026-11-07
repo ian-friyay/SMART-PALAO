@@ -11,18 +11,18 @@
                 <span class="text-xs font-bold uppercase tracking-widest text-[#FFC107]">Module 3 • E-Commerce Administration</span>
                 <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-[#FFC107] text-[#1F1F1F]">Owner Only</span>
             </div>
-            <h1 class="text-3xl font-black text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight mt-1">Multi-Branch Inventory Management</h1>
+            <h1 class="text-2xl sm:text-3xl font-black text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight mt-1">Multi-Branch Inventory Management</h1>
             <p class="text-xs text-[#7A7A7A] dark:text-[#8E8B83] mt-0.5">
                 Calibrate stock allocations and pricing for Large, Medium, and Small duck eggs per fulfillment hub
             </p>
         </div>
 
-        <div class="flex items-center gap-3">
-            <a href="{{ route('admin.dashboard') }}" class="egg-btn-secondary px-4 py-2 rounded-xl text-xs font-bold">
-                &larr; IoT Incubation Dashboard
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:flex sm:items-center w-full sm:w-auto">
+            <a href="{{ route('admin.dashboard') }}" class="egg-btn-secondary px-3.5 py-2.5 rounded-xl text-xs font-bold text-center">
+                &larr; IoT Dashboard
             </a>
-            <a href="{{ route('admin.orders') }}" class="egg-btn-primary px-4 py-2 rounded-xl text-xs font-bold">
-                Order Kanban Board &rarr;
+            <a href="{{ route('admin.orders') }}" class="egg-btn-primary px-3.5 py-2.5 rounded-xl text-xs font-bold text-center">
+                Kanban Board &rarr;
             </a>
         </div>
     </div>
@@ -33,25 +33,25 @@
             <span class="text-[11px] font-extrabold uppercase text-[#7A7A7A] dark:text-[#8E8B83] block">Total Hatchery Stock</span>
             <div class="flex items-baseline gap-2 mt-1">
                 <span class="text-3xl font-black font-mono text-[#3A3A3A] dark:text-[#F2EFE9]">
-                    {{ $productsGloria->sum('stock') + $productsBoracay->sum('stock') }}
+                    {{ $productsRoxas->sum('stock') + $productsBoracay->sum('stock') }}
                 </span>
                 <span class="text-xs text-gray-500 dark:text-gray-400 font-bold">dozens available</span>
             </div>
             <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold block mt-2">
-                Across Gloria ({{ $productsGloria->sum('stock') }}) & Boracay ({{ $productsBoracay->sum('stock') }})
+                Across Roxas ({{ $productsRoxas->sum('stock') }}) & Boracay ({{ $productsBoracay->sum('stock') }})
             </span>
         </div>
 
         <div class="egg-card p-5 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl">
-            <span class="text-[11px] font-extrabold uppercase text-[#7A7A7A] dark:text-[#8E8B83] block">Gloria Main Reserve</span>
+            <span class="text-[11px] font-extrabold uppercase text-[#7A7A7A] dark:text-[#8E8B83] block">Roxas Main Reserve</span>
             <div class="flex items-baseline gap-2 mt-1">
                 <span class="text-3xl font-black font-mono text-[#FFC107]">
-                    {{ $productsGloria->sum('stock') }}
+                    {{ $productsRoxas->sum('stock') }}
                 </span>
                 <span class="text-xs text-gray-500 dark:text-gray-400 font-bold">dozens</span>
             </div>
             <span class="text-[11px] text-gray-500 dark:text-gray-400 font-medium block mt-2">
-                Fulfills Mindoro & Mainland Orders
+                Main Farm & Hatchery Production Hub
             </span>
         </div>
 
@@ -64,7 +64,7 @@
                 <span class="text-xs text-gray-500 dark:text-gray-400 font-bold">dozens</span>
             </div>
             <span class="text-[11px] text-gray-500 dark:text-gray-400 font-medium block mt-2">
-                Fulfills Resort Buffet & Island Couriers
+                Fulfills Resort Buffet & Island Orders (Delivery Only)
             </span>
         </div>
     </div>
@@ -72,7 +72,7 @@
     <!-- Dual Branch Inventory Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        <!-- Branch 1: Gloria (Main Farm) -->
+        <!-- Branch 1: Roxas (Main Farm & Hatchery) -->
         <div class="egg-card p-6 bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] rounded-3xl shadow-sm space-y-6">
             <div class="flex items-center justify-between pb-4 border-b border-[#D9CBB8]/40 dark:border-[#3A3833]">
                 <div class="flex items-center gap-3">
@@ -80,8 +80,8 @@
                         🌾
                     </div>
                     <div>
-                        <h2 class="text-lg font-black text-[#3A3A3A] dark:text-[#F2EFE9]">Gloria Hatchery (Main Farm)</h2>
-                        <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Oriental Mindoro Production Hub</span>
+                        <h2 class="text-lg font-black text-[#3A3A3A] dark:text-[#F2EFE9]">Roxas Hatchery (Main Farm)</h2>
+                        <span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Oriental Mindoro Production & IoT Incubation Hub</span>
                     </div>
                 </div>
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase bg-[#FFC107]/20 text-[#3A3A3A] dark:text-[#FFC107] border border-[#FFC107]/40">
@@ -90,7 +90,7 @@
             </div>
 
             <div class="space-y-4">
-                @foreach($productsGloria as $prod)
+                @foreach($productsRoxas as $prod)
                     <div class="p-4 rounded-2xl bg-[#FAF9F6] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833] space-y-3">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2.5">

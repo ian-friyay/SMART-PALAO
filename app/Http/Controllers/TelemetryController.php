@@ -23,7 +23,7 @@ class TelemetryController extends Controller
         if (!$chamber) {
             $chamber = Chamber::create([
                 'name' => 'Incubator Alpha',
-                'location' => 'Gloria (Main Farm)',
+                'location' => 'Roxas (Main Hatchery)',
                 'setpoint' => 37.50,
                 'critical_temp' => 38.50,
                 'mode' => 'AUTO',
@@ -128,7 +128,7 @@ class TelemetryController extends Controller
         if (!$chamber) {
             $chamber = Chamber::first() ?? Chamber::create([
                 'name' => 'Incubator Alpha',
-                'location' => 'Gloria (Main Farm)',
+                'location' => 'Roxas (Main Hatchery)',
                 'setpoint' => 37.50,
                 'critical_temp' => 38.50,
                 'mode' => 'AUTO',

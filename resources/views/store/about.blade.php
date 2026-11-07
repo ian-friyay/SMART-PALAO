@@ -14,7 +14,7 @@
             The Story Behind <span class="text-[#FFC107]">Smart Palao</span>
         </h1>
         <p class="text-sm text-[#5A5A5A] dark:text-[#A8A49C] leading-relaxed">
-            From the fertile wetland pastures of Gloria, Oriental Mindoro to the premier island resorts of Boracay, discover how smart incubation telematics elevates traditional Philippine duck farming.
+            From the fertile wetland pastures of Roxas, Oriental Mindoro to the premier island resorts of Boracay, discover how smart incubation telematics elevates traditional Philippine duck farming.
         </p>
     </div>
 
@@ -23,10 +23,10 @@
         <div class="space-y-6">
             <span class="text-xs font-extrabold uppercase tracking-widest text-[#FFC107]">Our Heritage</span>
             <h2 class="text-3xl font-black text-[#3A3A3A] dark:text-[#F2EFE9] tracking-tight">
-                Roots in Gloria, Oriental Mindoro
+                Roots in Roxas, Oriental Mindoro
             </h2>
             <p class="text-sm text-[#5A5A5A] dark:text-[#A8A49C] leading-relaxed">
-                For over three decades, the Palao family has raised authentic <span class="font-bold text-[#3A3A3A] dark:text-[#F2EFE9]">Itik Pinas (Pateros Mallard)</span> ducks along the freshwater river systems of Gloria in Oriental Mindoro. Our ducks roam free in expansive open pastures, foraging on nutrient-dense freshwater snails, local grains, and river flora.
+                For over three decades, the Palao family has raised authentic <span class="font-bold text-[#3A3A3A] dark:text-[#F2EFE9]">Itik Pinas (Pateros Mallard)</span> ducks along the freshwater river systems of Roxas in Oriental Mindoro. Our ducks roam free in expansive open pastures, foraging on nutrient-dense freshwater snails, local grains, and river flora.
             </p>
             <p class="text-sm text-[#5A5A5A] dark:text-[#A8A49C] leading-relaxed">
                 This natural lifestyle creates duck eggs renowned for extraordinarily vibrant orange yolks, thick protein-rich albumens, and deep culinary flavor. However, traditional charcoal and kerosene incubator huts struggled with unpredictable tropical weather swings—causing cold spots, humidity spikes, and high embryonic mortality.
@@ -41,7 +41,7 @@
             <div class="w-full h-64 rounded-2xl bg-gradient-to-br from-[#FAF8F5] via-[#EBE5D8] to-[#D9CBB8] dark:from-[#1C1B19] dark:via-[#262420] dark:to-[#332F2A] flex flex-col items-center justify-center text-center p-6 border border-[#D9CBB8] dark:border-[#3A3833]">
                 <img src="{{ asset('images/smart-palao-logo.png') }}" alt="Smart Palao Emblem" class="w-28 h-28 object-contain rounded-full shadow-md mb-2">
                 <span class="font-black text-lg text-[#3A3A3A] dark:text-[#F2EFE9]">Palao Pastureland & Hatchery Hub</span>
-                <span class="text-xs text-[#7A7A7A] dark:text-[#A8A49C] mt-0.5">Gloria, Oriental Mindoro (Main) • Boracay Express Depot</span>
+                <span class="text-xs text-[#7A7A7A] dark:text-[#A8A49C] mt-0.5">Roxas, Oriental Mindoro (Main) • Boracay Express Depot</span>
             </div>
             <div class="grid grid-cols-3 gap-2 text-center text-xs">
                 <div class="p-2.5 rounded-xl bg-[#FAF9F6] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833]">
@@ -53,8 +53,8 @@
                     <span class="block text-[10px] text-gray-500 dark:text-gray-400">Egg Viability</span>
                 </div>
                 <div class="p-2.5 rounded-xl bg-[#FAF9F6] dark:bg-[#1A1917] border border-[#D9CBB8] dark:border-[#3A3833]">
-                    <span class="font-mono font-black text-sm text-[#89B4C4]">64 Sensels</span>
-                    <span class="block text-[10px] text-gray-500 dark:text-gray-400">Thermal Telemetry</span>
+                    <span class="font-mono font-black text-sm text-[#89B4C4]">ESP32-CAM</span>
+                    <span class="block text-[10px] text-gray-500 dark:text-gray-400">Optical Stream</span>
                 </div>
             </div>
         </div>
@@ -73,11 +73,11 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="p-6 rounded-2xl bg-[#FAF9F6] dark:bg-[#1C1B19] border border-[#D9CBB8] dark:border-[#3A3833] space-y-3">
                 <div class="w-12 h-12 rounded-xl bg-[#89B4C4] text-white flex items-center justify-center font-bold text-xl shadow-sm">
-                    1
+                    📷
                 </div>
-                <h3 class="font-bold text-base text-[#3A3A3A] dark:text-[#F2EFE9]">AMG8833 Thermal Heatmap</h3>
+                <h3 class="font-bold text-base text-[#3A3A3A] dark:text-[#F2EFE9]">ESP32-CAM Visual Telemetry</h3>
                 <p class="text-xs text-[#5A5A5A] dark:text-[#A8A49C] leading-relaxed">
-                    A Panasonic AMG8833 infrared thermopile camera continuously sweeps the incubator tray across an 8x8 matrix (64 temperature points). Any temperature variance exceeding ±0.2°C triggers automatic zone circulation, eliminating dead cold spots.
+                    An optical high-definition camera stream provides continuous visual monitoring of the egg incubation tray, embryo movements, and eggshell integrity directly inside the chamber.
                 </p>
             </div>
 
@@ -97,7 +97,7 @@
                 </div>
                 <h3 class="font-bold text-base text-[#3A3A3A] dark:text-[#F2EFE9]">Digital Candling Classification</h3>
                 <p class="text-xs text-[#5A5A5A] dark:text-[#A8A49C] leading-relaxed">
-                    At Day 14, every egg undergoes high-intensity digital candling. Results (viable embryo vs. non-viable) are logged into the system, ensuring that culinary table eggs and breeding eggs are sorted with zero guesswork.
+                    At Day 14, every egg undergoes high-intensity candling under camera backlight. Results (viable embryo vs. non-viable) are logged into the system, ensuring that culinary table eggs and breeding eggs are sorted with zero guesswork.
                 </p>
             </div>
         </div>
@@ -108,23 +108,23 @@
         <div class="p-6 rounded-3xl bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm space-y-3">
             <div class="flex items-center gap-2">
                 <span class="text-2xl">🌾</span>
-                <h3 class="font-black text-lg text-[#3A3A3A] dark:text-[#F2EFE9]">Gloria Hatchery (Main Farm)</h3>
+                <h3 class="font-black text-lg text-[#3A3A3A] dark:text-[#F2EFE9]">Roxas Hatchery (Main Farm & Incubation Center)</h3>
             </div>
             <p class="text-xs text-[#5A5A5A] dark:text-[#A8A49C] leading-relaxed">
-                Located in Gloria, Oriental Mindoro. Houses our primary free-range duck pastures, breeding flocks, egg selection grading facility, and IoT incubator chambers Alpha & Beta. Provides bulk egg trays for mainland Mindoro and Luzon distribution.
+                Located in Roxas, Oriental Mindoro. Houses our primary free-range duck pastures, breeding flocks, egg selection grading facility, and IoT incubator chambers Alpha & Beta. Provides bulk egg trays for mainland Mindoro and Luzon distribution.
             </p>
             <div class="text-xs text-emerald-600 dark:text-emerald-400 font-bold">
-                ✓ Same-day farm harvest & packing
+                ✓ Same-day farm harvest, incubation & packing
             </div>
         </div>
 
         <div class="p-6 rounded-3xl bg-white dark:bg-[#22201D] border border-[#D9CBB8] dark:border-[#3A3833] shadow-sm space-y-3">
             <div class="flex items-center gap-2">
                 <span class="text-2xl">🏖️</span>
-                <h3 class="font-black text-lg text-[#3A3A3A] dark:text-[#F2EFE9]">Boracay Island Depot</h3>
+                <h3 class="font-black text-lg text-[#3A3A3A] dark:text-[#F2EFE9]">Boracay Island Depot (Order Fulfillment Only)</h3>
             </div>
             <p class="text-xs text-[#5A5A5A] dark:text-[#A8A49C] leading-relaxed">
-                Located at Station 2, Boracay Island, Malay, Aklan. Receives daily temperature-controlled ferry dispatches directly from Gloria. Supplies Boracay's top breakfast cafes, five-star resort buffets, and local residents with fresh duck eggs.
+                Located at Station 2, Boracay Island, Malay, Aklan. Operates purely as a local distribution outpost (no incubation chambers located on the island). Receives fresh temperature-controlled dispatches directly from our Roxas farm to supply island resorts and dining kitchens.
             </p>
             <div class="text-xs text-[#89B4C4] font-bold">
                 ✓ Express e-trike island drop-off service

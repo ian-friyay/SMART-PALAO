@@ -17,7 +17,7 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        $selectedBranch = $request->session()->get('selected_branch', 'Gloria');
+        $selectedBranch = $request->session()->get('selected_branch', 'Roxas');
         $products = Product::where('branch_location', $selectedBranch)
             ->orderByRaw("CASE size WHEN 'Large' THEN 1 WHEN 'Medium' THEN 2 WHEN 'Small' THEN 3 ELSE 4 END")
             ->get();
@@ -38,7 +38,7 @@ class StoreController extends Controller
      */
     public function cart(Request $request)
     {
-        $selectedBranch = $request->session()->get('selected_branch', 'Gloria');
+        $selectedBranch = $request->session()->get('selected_branch', 'Roxas');
         $products = Product::where('branch_location', $selectedBranch)->get();
 
         return view('store.cart', compact('selectedBranch', 'products'));
@@ -50,7 +50,7 @@ class StoreController extends Controller
     public function setBranch(Request $request)
     {
         $validated = $request->validate([
-            'branch' => 'required|in:Gloria,Boracay',
+            'branch' => 'required|in:Roxas,Boracay',
         ]);
 
         $request->session()->put('selected_branch', $validated['branch']);
@@ -72,7 +72,7 @@ class StoreController extends Controller
      */
     public function getProducts(Request $request)
     {
-        $branch = $request->input('branch', $request->session()->get('selected_branch', 'Gloria'));
+        $branch = $request->input('branch', $request->session()->get('selected_branch', 'Roxas'));
         
         $products = Product::where('branch_location', $branch)
             ->orderByRaw("CASE size WHEN 'Large' THEN 1 WHEN 'Medium' THEN 2 WHEN 'Small' THEN 3 ELSE 4 END")
@@ -92,7 +92,7 @@ class StoreController extends Controller
     public function checkout(Request $request)
     {
         $validated = $request->validate([
-            'branch_location' => 'required|in:Gloria,Boracay',
+            'branch_location' => 'required|in:Roxas,Boracay',
             'customer_name' => 'required|string|max:255',
             'customer_email' => 'required|email|max:255',
             'customer_phone' => 'required|string|max:25',
